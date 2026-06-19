@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     return Response.json({ errors: result.error.flatten().fieldErrors }, { status: 400 });
   }
 
-  const { name, email, phone, type, message, website } = result.data;
+  const { name, email, phone, message, website } = result.data;
 
   // 3. Honeypot check — non-empty website field = bot; pretend success
   if (website && website.trim().length > 0) {
@@ -39,20 +39,10 @@ export async function POST(request: Request) {
   const { Resend } = await import("resend");
   const resend = new Resend(apiKey);
 
-  const typeLabels: Record<string, string> = {
-    rodina: "Rodinné focení",
-    svatba: "Svatba",
-    udalost: "Událost / oslava",
-    dron: "Focení z dronu",
-    jine: "Jiné",
-  };
-  const typeLabel = type ? (typeLabels[type] ?? type) : "—";
-
   const html = `
     <p><strong>Jméno:</strong> ${escHtml(name)}</p>
     <p><strong>E-mail:</strong> ${escHtml(email)}</p>
     <p><strong>Telefon:</strong> ${escHtml(phone ?? "—")}</p>
-    <p><strong>Typ focení:</strong> ${escHtml(typeLabel)}</p>
     <hr />
     <p><strong>Zpráva:</strong></p>
     <p>${escHtml(message).replace(/\n/g, "<br />")}</p>
@@ -62,7 +52,6 @@ export async function POST(request: Request) {
     `Jméno: ${name}`,
     `E-mail: ${email}`,
     `Telefon: ${phone ?? "—"}`,
-    `Typ focení: ${typeLabel}`,
     "",
     `Zpráva:\n${message}`,
   ].join("\n");

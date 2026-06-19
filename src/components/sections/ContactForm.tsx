@@ -27,14 +27,10 @@ export function ContactForm() {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
 
-    // Normalize data: empty string for 'type' → undefined (zod enum doesn't accept "")
-    const rawType = fd.get("type") as string | null;
-
     const data = {
       name: (fd.get("name") as string | null) ?? "",
       email: (fd.get("email") as string | null) ?? "",
       phone: (fd.get("phone") as string | null) ?? undefined,
-      type: rawType && rawType.length > 0 ? rawType : undefined,
       message: (fd.get("message") as string | null) ?? "",
       // checkbox returns "on" when checked, null when unchecked
       gdpr: fd.get("gdpr") === "on" ? (true as const) : (false as unknown as true),
@@ -146,30 +142,6 @@ export function ContactForm() {
           aria-describedby={fieldErrors.email?.length ? "error-email" : undefined}
         />
         <FieldError id="error-email" messages={fieldErrors.email} />
-      </div>
-
-      <div>
-        <label htmlFor="contact-type" className={labelClass}>
-          Typ focení
-        </label>
-        <select
-          id="contact-type"
-          name="type"
-          defaultValue=""
-          className={inputClass}
-          aria-invalid={!!fieldErrors.type?.length}
-          aria-describedby={fieldErrors.type?.length ? "error-type" : undefined}
-        >
-          <option value="" disabled>
-            Vyberte typ...
-          </option>
-          <option value="rodina">Rodinné focení</option>
-          <option value="svatba">Svatba</option>
-          <option value="udalost">Událost / oslava</option>
-          <option value="dron">Focení z dronu</option>
-          <option value="jine">Jiné</option>
-        </select>
-        <FieldError id="error-type" messages={fieldErrors.type} />
       </div>
 
       <div>

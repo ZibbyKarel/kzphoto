@@ -10,9 +10,6 @@ export const contactSchema = z.object({
 
   phone: z.string().optional(),
 
-  /** Prázdný řetězec (žádná volba) je normalizován na undefined před validací. */
-  type: z.enum(["rodina", "svatba", "udalost", "dron", "jine"]).optional(),
-
   message: z
     .string()
     .min(10, "Zpráva musí mít alespoň 10 znaků.")

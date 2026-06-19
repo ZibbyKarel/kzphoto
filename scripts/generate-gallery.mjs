@@ -336,6 +336,17 @@ export const galleryPhotos = ${JSON.stringify(manifestEntries, null, 2)} as cons
   console.log(
     `\nManifest written to src/lib/gallery.generated.ts (${manifestEntries.length} photos total)`,
   );
+
+  // Bust the Next.js image-optimizer cache. Photos are re-generated under the
+  // same filenames, so without this the optimizer (and the browser) can keep
+  // serving stale thumbnails — the placeholder shows while the full image is
+  // correct. Removing the cache forces a fresh optimize on next request.
+  try {
+    await fs.rm(path.join(ROOT, ".next", "cache", "images"), { recursive: true, force: true });
+    console.log("Cleared .next/cache/images — restart dev server + hard-refresh the browser.");
+  } catch {
+    /* no .next yet — nothing to clear */
+  }
 }
 
 main().catch((err) => {
