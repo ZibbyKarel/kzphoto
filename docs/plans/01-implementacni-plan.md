@@ -234,7 +234,7 @@ public/
 
 ---
 
-## FÁZE 5 — Kontaktní formulář (funkční)
+## FÁZE 5 — Kontaktní formulář (funkční) ✅
 
 ### 5.1 Backend odeslání
 
