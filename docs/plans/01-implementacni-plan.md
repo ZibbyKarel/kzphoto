@@ -276,7 +276,7 @@ public/
 
 ---
 
-## FÁZE 7 — SEO, přístupnost & výkon
+## FÁZE 7 — SEO, přístupnost & výkon ✅
 
 ### 7.1 SEO
 

@@ -13,7 +13,7 @@ import {
   categories,
   type CategorySlug,
 } from "@/lib/gallery";
-import { site } from "@/lib/site";
+import { buildMetadata } from "@/lib/metadata";
 
 type PageProps = {
   params: Promise<{ kategorie: string }>;
@@ -31,10 +31,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Stránka nenalezena" };
   }
 
-  return {
-    title: `${cat.title} — Galerie | ${site.name}`,
+  // buildMetadata handles title (bare, for template), og:title (full), description,
+  // canonical URL (prevents canonicalizing category pages to /), and OG/Twitter cards.
+  return buildMetadata({
+    title: `${cat.title} — Galerie`,
     description: cat.description,
-  };
+    path: `/galerie/${kategorie}`,
+  });
 }
 
 export default async function GaleriePage({ params }: PageProps) {

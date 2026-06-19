@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { StructuredData } from "@/components/seo/StructuredData";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -19,8 +20,44 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: site.name,
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — ${site.tagline}`,
+    template: `%s | ${site.name}`,
+  },
   description: site.description,
+  keywords: [
+    "fotograf Plzeň",
+    "rodinné focení Plzeň",
+    "fotograf reality Plzeň",
+    "krajinářská fotografie",
+    "fotograf Plzeňský kraj",
+    "rodinný fotograf Plzeň",
+    "focení nemovitostí Plzeň",
+  ],
+  applicationName: site.name,
+  authors: [{ name: site.name }],
+  creator: site.name,
+  openGraph: {
+    siteName: site.name,
+    locale: "cs_CZ",
+    type: "website",
+    url: site.url,
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
@@ -31,6 +68,7 @@ export default function RootLayout({
   return (
     <html lang="cs" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <StructuredData />
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
