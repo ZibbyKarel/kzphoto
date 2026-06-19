@@ -114,7 +114,7 @@ public/
 
 ---
 
-## FÁZE 2 — Obsahové sekce (statické, bez animací)
+## FÁZE 2 — Obsahové sekce (statické, bez animací) ✅
 
 > Animace přijdou ve Fázi 4. Teď postavit obsah a layout.
 
