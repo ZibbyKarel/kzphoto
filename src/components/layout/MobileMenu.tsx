@@ -27,7 +27,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
     <div
       id="mobile-menu"
       className={cn(
-        "bg-background/95 fixed inset-0 z-40 flex flex-col backdrop-blur-xl transition-opacity duration-300 md:hidden",
+        "bg-background fixed inset-0 z-40 flex flex-col transition-opacity duration-300 md:hidden",
         open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
       )}
       aria-hidden={!open}

@@ -12,8 +12,9 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header
-      className={cn(
+    <>
+      <header
+        className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled || menuOpen
           ? "border-border bg-background/80 border-b backdrop-blur-xl"
@@ -67,7 +68,9 @@ export function Header() {
         </button>
       </div>
 
+      </header>
+
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-    </header>
+    </>
   );
 }

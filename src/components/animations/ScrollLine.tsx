@@ -35,10 +35,10 @@ export function ScrollLine() {
           strokeDashoffset: 0,
           ease: "none",
           scrollTrigger: {
-            trigger: document.documentElement,
-            start: "top top",
-            end: "bottom bottom",
+            start: 0,
+            end: "max",
             scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         },
       );
