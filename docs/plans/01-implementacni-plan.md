@@ -301,7 +301,7 @@ public/
 
 ---
 
-## FÁZE 8 — Nasazení
+## FÁZE 8 — Nasazení ✅ (příprava)
 
 ### 8.1 Vercel
 

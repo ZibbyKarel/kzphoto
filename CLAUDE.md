@@ -4,7 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Status
 
-This project (`photo-web`) is in its initial state — no source files, build system, or tooling have been added yet. Update this file once the stack is chosen and scaffolded.
+Photographer portfolio + lead-gen site for Plzeň (rodina / reality / krajiny). MVP implemented;
+see `docs/plans/01-implementacni-plan.md` for phases (✅ = done). Deferred: CMS (Sanity), blog.
+
+## Stack & conventions
+
+- **Next.js 16** (App Router) + React 19 + TypeScript, **Tailwind v4** (CSS-first tokens in
+  `src/app/globals.css` `@theme` — no `tailwind.config`), **GSAP** (`@gsap/react` `useGSAP`).
+- Content lives in `src/lib/`: `site.ts` (name/contact/nav), `content.ts` (sections/pricing/FAQ),
+  `gallery.ts` + generated `gallery.generated.ts`. Edit data there, not in components.
+- UI primitives in `src/components/ui/`; sections in `src/components/sections/`; animations in
+  `src/components/animations/` (all client, `matchMedia` reduced-motion guarded).
+- Gallery photos: drop into `gallery-source/<cat>/` and run `npm run gallery`.
+- Contact form: `src/app/api/contact/route.ts` (Resend, env-gated) + shared `contact-schema.ts`.
+
+## Commands
+
+`npm run dev` · `build` · `lint` · `typecheck` · `format` · `gallery`. Green = lint + typecheck +
+build all pass.
 
 ## graphify
 

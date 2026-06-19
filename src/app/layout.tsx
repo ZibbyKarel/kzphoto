@@ -3,6 +3,8 @@ import { Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -72,6 +74,8 @@ export default function RootLayout({
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
