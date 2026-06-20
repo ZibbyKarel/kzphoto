@@ -18,16 +18,22 @@ export const metadata: Metadata = {
 };
 
 const { defaultLocale, locales } = routing;
-const fallback = `/${defaultLocale}/`;
+
+// basePath is NOT applied to the raw <a>/<meta>/location.replace below — Next
+// only rewrites next/link & next-intl navigation — so prepend it by hand, using
+// the same env var next.config.ts reads. ("/" → "" to match basePath.)
+const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const basePath = rawBasePath === "/" ? "" : rawBasePath;
+const fallback = `${basePath}/${defaultLocale}/`;
 
 // Runs before paint: forward to the best-matching locale, else the default.
 const redirectScript = `(function(){try{
-var locales=${JSON.stringify(locales)},def=${JSON.stringify(defaultLocale)};
+var base=${JSON.stringify(basePath)},locales=${JSON.stringify(locales)},def=${JSON.stringify(defaultLocale)};
 var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:(navigator.language?[navigator.language]:[]);
 var target=def;
 if(langs.length){var first=String(langs[0]).toLowerCase();target=(first==="cs"||first.indexOf("cs-")===0)?"cs":"en";}
 if(locales.indexOf(target)===-1)target=def;
-location.replace("/"+target+"/");
+location.replace(base+"/"+target+"/");
 }catch(e){location.replace(${JSON.stringify(fallback)});}})();`;
 
 export default function RootRedirect() {
