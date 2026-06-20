@@ -92,25 +92,45 @@
         "title": "Family session",
         "price": "from 1,800 CZK",
         "description": "Set up at your home in an improvised studio or outdoors — beautiful photos can happen anywhere, with anything, you just have to put a little work into it.",
-        "features": ["1–1.5 hours of shooting", "Online gallery", "25+ edited photos", "Delivery within 10 days"]
+        "features": [
+          "1–1.5 hours of shooting",
+          "Online gallery",
+          "10+ edited photos",
+          "Delivery within 10 days"
+        ]
       },
       "wedding": {
         "title": "Wedding",
         "price": "from 8,900 CZK",
         "description": "Reportage of your wedding day.",
-        "features": ["6–8 hours of shooting", "300+ edited photos", "Online gallery to download", "Consultation beforehand"]
+        "features": [
+          "6–8 hours of shooting",
+          "300+ edited photos",
+          "Online gallery to download",
+          "Consultation beforehand"
+        ]
       },
       "event": {
         "title": "Events",
         "price": "from 1,500 CZK / hour",
         "description": "Celebrations, christenings, corporate and social events.",
-        "features": ["Reportage shooting", "Online gallery", "Delivery within 10 days", "Flexible length"]
+        "features": [
+          "Reportage shooting",
+          "Online gallery",
+          "Delivery within 10 days",
+          "Flexible length"
+        ]
       },
       "drone": {
         "title": "From the drone",
         "price": "from 1,200 CZK",
         "description": "Aerial shots on their own, or as an add-on to another shoot.",
-        "features": ["Aerial drone photo", "As a shoot add-on from 800 CZK", "Subject to weather and location", "Editing included"]
+        "features": [
+          "Aerial drone photo",
+          "As a shoot add-on from 800 CZK",
+          "Subject to weather and location",
+          "Editing included"
+        ]
       }
     }
   },

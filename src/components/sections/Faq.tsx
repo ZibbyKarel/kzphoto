@@ -1,8 +1,9 @@
-import { useTranslations } from "next-intl";
-import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { Stack } from "@/components/ui/Stack";
-import { Eyebrow, Heading } from "@/components/ui/Typography";
+import { Eyebrow, Heading, titleClasses } from "@/components/ui/Typography";
+import { cn } from "@/lib/cn";
+import { useTranslations } from "next-intl";
 
 type FaqItem = { question: string; answer: string };
 
@@ -23,10 +24,15 @@ export function Faq() {
           </Stack>
 
           {/* Accordion using native <details> — accessible, no JS */}
-          <div className="divide-border flex flex-col divide-y">
+          <div className="divide-border flex w-full flex-col divide-y">
             {items.map((item, i) => (
               <details key={i} className="group py-6 first:pt-0 last:pb-0">
-                <summary className="text-foreground flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg font-semibold tracking-tight [&::-webkit-details-marker]:hidden">
+                <summary
+                  className={cn(
+                    titleClasses("lg"),
+                    "text-foreground flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden",
+                  )}
+                >
                   {item.question}
                   {/* Open/close indicator */}
                   <span

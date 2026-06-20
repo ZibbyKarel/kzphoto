@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
-import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
+import { Eyebrow, Heading, Label, Text, Title } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
 import { pricingPackages } from "@/lib/content";
 import { cn } from "@/lib/cn";
@@ -42,22 +42,20 @@ export function Pricing() {
               >
                 <Stack gap="xs">
                   {pkg.highlight && (
-                    <span className="text-accent text-xs font-medium tracking-[0.2em] uppercase">
+                    <Label tone="accent" className="font-medium">
                       {t("popular")}
-                    </span>
+                    </Label>
                   )}
-                  <h3 className="text-foreground font-serif text-xl font-semibold tracking-tight">
-                    {t(`packages.${pkg.id}.title`)}
-                  </h3>
+                  <Title as="h3">{t(`packages.${pkg.id}.title`)}</Title>
                   <Text tone="muted" size="sm">
                     {t(`packages.${pkg.id}.description`)}
                   </Text>
                 </Stack>
 
                 <div className="border-border border-t pt-6">
-                  <p className="text-foreground font-serif text-3xl font-semibold tracking-tight">
+                  <Title as="p" size="3xl">
                     {t(`packages.${pkg.id}.price`)}
-                  </p>
+                  </Title>
                 </div>
 
                 <ul className="flex flex-1 flex-col gap-2">
@@ -79,7 +77,9 @@ export function Pricing() {
           </Reveal>
 
           {/* Note */}
-          <p className="text-faint max-w-xl text-sm leading-relaxed">{t("note")}</p>
+          <Text tone="faint" size="sm" className="max-w-xl">
+            {t("note")}
+          </Text>
         </Stack>
       </Container>
     </Section>

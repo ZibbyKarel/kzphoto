@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
-import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
+import { Eyebrow, Heading, Text, Title } from "@/components/ui/Typography";
 import { Reveal } from "@/components/animations/Reveal";
 
 type Step = { title: string; description: string };
@@ -40,9 +40,7 @@ export function Process() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <Stack gap="xs">
-                    <h3 className="text-foreground font-serif text-xl font-semibold tracking-tight">
-                      {step.title}
-                    </h3>
+                    <Title as="h3">{step.title}</Title>
                     <Text tone="muted" size="sm">
                       {step.description}
                     </Text>

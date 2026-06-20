@@ -43,15 +43,15 @@ export async function GalleryPreview() {
                     {/* Category title + description */}
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                       <Stack gap="xs">
-                        <h3 className="text-foreground font-serif text-2xl font-semibold tracking-tight md:text-3xl">
+                        <Heading as="h3" size="md">
                           {t(`categories.${cat.slug}.title`)}
-                        </h3>
+                        </Heading>
                         <Text tone="muted" size="sm" className="max-w-md">
                           {t(`categories.${cat.slug}.description`)}
                         </Text>
                       </Stack>
                       <ButtonLink
-                        href={`/gallery/${cat.slug}`}
+                        href={`/gallery#${cat.slug}`}
                         variant="ghost"
                         className="shrink-0 self-start sm:self-auto"
                       >
@@ -67,7 +67,7 @@ export async function GalleryPreview() {
                       {previews.map((photo) => (
                         <Link
                           key={photo.src}
-                          href={`/gallery/${cat.slug}`}
+                          href={`/gallery#${cat.slug}`}
                           className="group block overflow-hidden"
                           tabIndex={-1}
                           aria-hidden="true"

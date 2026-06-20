@@ -92,13 +92,23 @@
         "title": "Rodinné focení",
         "price": "od 1 800 Kč",
         "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce.",
-        "features": ["1–1,5 hodiny focení", "Online galerie", "25+ upravených fotek", "Dodání do 10 dnů"]
+        "features": [
+          "1–1,5 hodiny focení",
+          "Online galerie",
+          "10+ upravených fotek",
+          "Dodání do 10 dnů"
+        ]
       },
       "wedding": {
         "title": "Svatba",
         "price": "od 8 900 Kč",
         "description": "Reportáž z vašeho svatebního dne.",
-        "features": ["6–8 hodin focení", "300+ upravených fotek", "Online galerie ke stažení", "Konzultace předem"]
+        "features": [
+          "6–8 hodin focení",
+          "300+ upravených fotek",
+          "Online galerie ke stažení",
+          "Konzultace předem"
+        ]
       },
       "event": {
         "title": "Události",
@@ -110,7 +120,12 @@
         "title": "Z dronu",
         "price": "od 1 200 Kč",
         "description": "Letecké snímky samostatně, nebo jako příplatek k jinému focení.",
-        "features": ["Letecké foto z dronu", "Jako doplněk focení od 800 Kč", "Dle počasí a lokality", "Úprava v ceně"]
+        "features": [
+          "Letecké foto z dronu",
+          "Jako doplněk focení od 800 Kč",
+          "Dle počasí a lokality",
+          "Úprava v ceně"
+        ]
       }
     }
   },

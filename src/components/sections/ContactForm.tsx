@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Stack } from "@/components/ui/Stack";
 import { Button } from "@/components/ui/Button";
+import { Eyebrow, Text, Title } from "@/components/ui/Typography";
 import { useContactForm } from "@/hooks/useContactForm";
 
 const inputClass =
@@ -58,13 +59,13 @@ export function ContactForm() {
         className="border-border bg-surface rounded-none border p-8 text-center"
       >
         <Stack gap="md" align="center">
-          <p className="text-accent text-sm font-medium tracking-[0.2em] uppercase">
-            {t("successEyebrow")}
-          </p>
-          <p className="text-foreground font-serif text-2xl font-semibold">
+          <Eyebrow>{t("successEyebrow")}</Eyebrow>
+          <Title as="p" size="2xl">
             {t("successHeading")}
-          </p>
-          <p className="text-muted text-sm leading-relaxed">{t("successText")}</p>
+          </Title>
+          <Text tone="muted" size="sm">
+            {t("successText")}
+          </Text>
           <Button type="button" variant="ghost" size="md" onClick={handleReset} className="mt-2">
             {t("sendAnother")}
           </Button>

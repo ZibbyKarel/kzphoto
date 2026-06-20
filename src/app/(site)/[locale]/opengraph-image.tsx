@@ -14,6 +14,11 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   const tf = await getTranslations({ locale, namespace: "footer" });
   const tm = await getTranslations({ locale, namespace: "meta" });
 
+  const logo = await fetch(new URL("./logo-mark.png", import.meta.url)).then((r) =>
+    r.arrayBuffer(),
+  );
+  const logoSrc = `data:image/png;base64,${Buffer.from(logo).toString("base64")}`;
+
   return new ImageResponse(
     <div
       style={{
@@ -38,6 +43,15 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           height: "100%",
           backgroundColor: "#c2724e",
         }}
+      />
+
+      {/* Logo mark, top-right */}
+      <img
+        src={logoSrc}
+        width={150}
+        height={150}
+        alt=""
+        style={{ position: "absolute", top: "64px", right: "72px" }}
       />
 
       {/* Location badge */}

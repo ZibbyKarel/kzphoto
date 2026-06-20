@@ -5,7 +5,8 @@ import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
-import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
+import { Eyebrow, Heading, Label, Text } from "@/components/ui/Typography";
+import { TextLink } from "@/components/ui/Link";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { getCategorySlugs, getPhotosByCategory, categories, isCategorySlug } from "@/lib/gallery";
 import { buildMetadata } from "@/lib/metadata";
@@ -58,10 +59,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
       <div className="pt-28 md:pt-36">
         <Container>
           <Stack gap="md" className="py-12 md:py-16">
-            <Link
-              href="/#gallery"
-              className="text-muted hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
-            >
+            <TextLink href="/#gallery" className="inline-flex items-center gap-2 text-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -77,7 +75,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
                 <polyline points="15 18 9 12 15 6" />
               </svg>
               {t("backToGallery")}
-            </Link>
+            </TextLink>
 
             <Stack gap="sm">
               <Eyebrow>{t("eyebrow")}</Eyebrow>
@@ -104,9 +102,9 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
         <Section spacing="compact" className="border-border border-t">
           <Container>
             <Stack gap="lg">
-              <p className="text-muted text-sm font-medium tracking-[0.15em] uppercase">
+              <Label tone="muted" size="sm" className="font-medium tracking-[0.15em]">
                 {t("otherCategories")}
-              </p>
+              </Label>
               <div className="flex flex-wrap gap-4">
                 {otherCategories.map((other) => (
                   <Link
