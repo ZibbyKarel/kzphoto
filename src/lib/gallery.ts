@@ -6,6 +6,7 @@
  */
 
 import { isSanityConfigured } from "@/sanity/env";
+import { withBasePath } from "./asset";
 import { galleryPhotos } from "./gallery.generated";
 
 /* ---------------------------------------------------------------------------
@@ -63,7 +64,9 @@ function sortByLargestFirst(photos: readonly GalleryPhoto[]): GalleryPhoto[] {
 
 /** Static photos for a category — used as fallback when Sanity is not configured. */
 function getStaticPhotosByCategory(slug: CategorySlug): GalleryPhoto[] {
-  return (galleryPhotos as readonly GalleryPhoto[]).filter((p) => p.category === slug);
+  return (galleryPhotos as readonly GalleryPhoto[])
+    .filter((p) => p.category === slug)
+    .map((p) => ({ ...p, src: withBasePath(p.src) }));
 }
 
 /**

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { withBasePath } from "@/lib/asset";
 import Image from "next/image";
 
 /**
@@ -9,7 +10,7 @@ import Image from "next/image";
 export function Logo({ className, priority = false }: { className?: string; priority?: boolean }) {
   return (
     <Image
-      src="/logo.png"
+      src={withBasePath("/logo.png")}
       alt=""
       aria-hidden="true"
       width={96}

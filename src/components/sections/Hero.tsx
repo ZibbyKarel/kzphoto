@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { withBasePath } from "@/lib/asset";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
@@ -18,7 +19,7 @@ export function Hero() {
       {/* Background — hero photo with parallax */}
       <Parallax amount={12} className="absolute inset-0">
         <Image
-          src="/hero.jpg"
+          src={withBasePath("/hero.jpg")}
           alt=""
           fill
           priority
