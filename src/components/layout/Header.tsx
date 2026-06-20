@@ -21,7 +21,17 @@ export function Header() {
           : "border-b border-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-6 md:h-20 md:px-10">
+      {/* Tmavý scrim nahoře — drží logo i menu čitelné nad světlou hero fotkou,
+          dokud uživatel neodscrolluje (pak nastoupí rozmazané pozadí výše). */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent transition-opacity duration-300",
+          scrolled || menuOpen ? "opacity-0" : "opacity-100",
+        )}
+      />
+
+      <div className="relative mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-6 md:h-20 md:px-10">
         <Link
           href="/"
           className="font-serif text-lg font-semibold tracking-tight md:text-xl"
@@ -35,7 +45,12 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-muted hover:text-foreground text-sm transition-colors"
+              className={cn(
+                "text-sm transition-colors",
+                scrolled
+                  ? "text-muted hover:text-foreground"
+                  : "text-foreground/80 hover:text-foreground",
+              )}
             >
               {item.label}
             </Link>

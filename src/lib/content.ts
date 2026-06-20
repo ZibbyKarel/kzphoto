@@ -27,6 +27,12 @@ export const processSteps: ProcessStep[] = [
   },
   {
     number: "03",
+    title: "Výběr",
+    description:
+      "Náhledy všech fotek pošlu do druhého dne. Vy si jen vyberete, které se Vám líbí a ty následně upravím.",
+  },
+  {
+    number: "04",
     title: "Hotové fotky",
     description:
       "Fotky zpracuji a doručím přes online galerii. Ke stažení ve vysokém rozlišení, kdykoli a odkudkoli.",
@@ -50,7 +56,8 @@ export const pricingPackages: PricingPackage[] = [
     id: "rodina",
     title: "Rodinné focení",
     price: "od 1 800 Kč",
-    description: "Uvolněné focení rodiny doma nebo v přírodě.",
+    description:
+      "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce.",
     features: ["1–1,5 hodiny focení", "Online galerie", "25+ upravených fotek", "Dodání do 10 dnů"],
     highlight: true,
   },

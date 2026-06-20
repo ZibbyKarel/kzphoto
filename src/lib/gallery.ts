@@ -37,7 +37,8 @@ export const categories: GalleryCategory[] = [
   {
     slug: "rodina",
     title: "Rodina",
-    description: "Přirozené rodinné okamžiky — doma, venku, ve světle běžného dne.",
+    description:
+      "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce.",
   },
   {
     slug: "svatby_udalosti",
