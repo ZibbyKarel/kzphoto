@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
 
@@ -11,6 +12,8 @@ type MobileMenuProps = {
 };
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
+  const t = useTranslations("nav");
+
   // Lock body scroll + close on Escape while open.
   useEffect(() => {
     if (!open) return;
@@ -40,7 +43,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             onClick={onClose}
             className="hover:text-accent font-serif text-3xl font-medium tracking-tight transition-colors"
           >
-            {item.label}
+            {t(item.id)}
           </Link>
         ))}
       </nav>

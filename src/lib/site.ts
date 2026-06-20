@@ -16,10 +16,10 @@ export const site = {
   instagram: "https://instagram.com/zibbykarel",
   instagramHandle: "@zibbykarel",
   nav: [
-    { label: "Galerie", href: "/#galerie" },
-    { label: "O mně", href: "/#o-mne" },
-    { label: "Ceník", href: "/#cenik" },
-    { label: "Kontakt", href: "/#kontakt" },
+    { id: "gallery", href: "/#galerie" },
+    { id: "about", href: "/#o-mne" },
+    { id: "pricing", href: "/#cenik" },
+    { id: "contact", href: "/#kontakt" },
   ],
 } as const;
 

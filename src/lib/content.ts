@@ -83,11 +83,11 @@ export const pricingPackages: PricingPackage[] = [
   {
     id: "dron",
     title: "Z dronu",
-    price: "od 1 500 Kč",
-    description: "Letecké snímky samostatně nebo jako příplatek k focení.",
+    price: "od 1 200 Kč",
+    description: "Letecké snímky samostatně, nebo jako příplatek k jinému focení.",
     features: [
       "Letecké foto z dronu",
-      "Samostatně či jako doplněk",
+      "Jako doplněk focení od 800 Kč",
       "Dle počasí a lokality",
       "Úprava v ceně",
     ],
@@ -95,7 +95,7 @@ export const pricingPackages: PricingPackage[] = [
 ] as const;
 
 export const pricingNote =
-  "Orientační ceny — každá zakázka je jiná. Nestandardní požadavky nebo kombinace služeb rád probereme individuálně.";
+  "Uvedené ceny jsou zaváděcí — postupně si buduji portfolio a chci, aby kvalitní focení bylo dostupné. Každá zakázka je jiná; nestandardní požadavky nebo kombinaci služeb rád proberu individuálně.";
 
 /* ---------------------------------------------------------------------------
    Testimonials — Reference

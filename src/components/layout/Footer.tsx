@@ -1,8 +1,10 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/lib/site";
 
 export function Footer() {
+  const t = useTranslations("nav");
   const year = 2026;
 
   return (
@@ -21,7 +23,7 @@ export function Footer() {
               href={item.href}
               className="text-muted hover:text-foreground text-sm transition-colors"
             >
-              {item.label}
+              {t(item.id)}
             </Link>
           ))}
         </nav>

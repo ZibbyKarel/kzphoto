@@ -6,13 +6,21 @@ import { Pricing } from "@/components/sections/Pricing";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
-import { ScrollLine } from "@/components/animations/ScrollLine";
+import { FocalAxis } from "@/components/animations/FocalAxis";
 import { Reveal } from "@/components/animations/Reveal";
+import { setRequestLocale } from "next-intl/server";
 
-export default function Home() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
-      <ScrollLine />
+      <FocalAxis />
       <Hero />
       <Reveal>
         <About />

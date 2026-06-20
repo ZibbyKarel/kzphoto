@@ -71,13 +71,21 @@ export function getCategorySlugs(): CategorySlug[] {
   return categories.map((c) => c.slug);
 }
 
+/**
+ * Sorts photos by pixel area (width × height) descending — the largest photos
+ * come first. Returns a new array; the input is not mutated.
+ */
+function sortByLargestFirst(photos: readonly GalleryPhoto[]): GalleryPhoto[] {
+  return [...photos].sort((a, b) => b.width * b.height - a.width * a.height);
+}
+
 /** Static photos for a category — used as fallback when Sanity is not configured. */
 function getStaticPhotosByCategory(slug: CategorySlug): GalleryPhoto[] {
   return (galleryPhotos as readonly GalleryPhoto[]).filter((p) => p.category === slug);
 }
 
 /**
- * Returns all photos for a given category slug.
+ * Returns all photos for a given category slug, largest first.
  *
  * Fallback: pokud je nastaveno `NEXT_PUBLIC_SANITY_PROJECT_ID`, čte ze Sanity;
  * jinak vrací statická data jako dosud. Async kvůli Sanity fetch.
@@ -87,9 +95,9 @@ export async function getPhotosByCategory(slug: CategorySlug): Promise<GalleryPh
     const { fetchPhotosByCategory } = await import("@/sanity/data");
     const photos = await fetchPhotosByCategory(slug);
     // Bezpečnostní fallback: prázdný dataset → statický obsah.
-    if (photos.length > 0) return photos;
+    if (photos.length > 0) return sortByLargestFirst(photos);
   }
-  return getStaticPhotosByCategory(slug);
+  return sortByLargestFirst(getStaticPhotosByCategory(slug));
 }
 
 /** Returns the first n photos for a category — used in the homepage preview. */

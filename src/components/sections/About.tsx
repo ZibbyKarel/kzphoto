@@ -31,14 +31,15 @@ export function About() {
 
               <Stack gap="md">
                 <Text tone="muted">
-                  Jsem začínající fotograf z Plzně a focení beru jako způsob, jak zastavit čas.
-                  Nejvíce mě naplňuje rodinné focení — když zachytím spontánní smích, objetí nebo
-                  pohled, na který se nedá připravit.
+                  Jsem fotograf z Plzně na začátku své cesty — a beru to jako přednost. Svoje jméno
+                  si teprve buduji, takže do každého focení dávám naprostou pozornost a energii.
+                  Nejste pro mě zakázka v řadě, ale lidé, jejichž okamžik chci zachytit co nejlíp.
                 </Text>
                 <Text tone="muted">
-                  Fotím venku i v interiéru, ale přirozené světlo je moje doména. Pracuji klidně,
-                  bez spěchu — chci, aby se před objektivem cítil každý pohodlně. Vedle rodinného
-                  focení se věnuji svatebním reportážím, focení událostí a leteckým záběrům z dronu.
+                  Nejvíc mě naplňuje rodinné focení — spontánní smích, objetí, pohled, na který se
+                  nedá připravit. Fotím venku i v interiéru, ale přirozené světlo je moje doména.
+                  Pracuji klidně, bez spěchu, ať se před objektivem cítí každý pohodlně. Vedle
+                  rodiny se věnuji i svatebním reportážím, událostem a leteckým záběrům z dronu.
                 </Text>
               </Stack>
 

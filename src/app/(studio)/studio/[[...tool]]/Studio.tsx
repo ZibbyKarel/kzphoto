@@ -1,9 +1,9 @@
 "use client";
 
 import { NextStudio } from "next-sanity/studio";
-import config from "../../../../sanity.config";
+import config from "../../../../../sanity.config";
 
-/** Klientský wrapper embedded Studia. */
+/** Client wrapper for the embedded Studio. */
 export function Studio() {
   return <NextStudio config={config} />;
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
 import { useScrolled } from "@/hooks/useScrolled";
@@ -9,6 +10,7 @@ import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
   const scrolled = useScrolled();
+  const t = useTranslations("nav");
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -52,7 +54,7 @@ export function Header() {
                   : "text-foreground/80 hover:text-foreground",
               )}
             >
-              {item.label}
+              {t(item.id)}
             </Link>
           ))}
         </nav>

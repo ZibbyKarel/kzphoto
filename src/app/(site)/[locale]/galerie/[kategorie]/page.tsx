@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
@@ -16,7 +17,7 @@ import {
 import { buildMetadata } from "@/lib/metadata";
 
 type PageProps = {
-  params: Promise<{ kategorie: string }>;
+  params: Promise<{ locale: string; kategorie: string }>;
 };
 
 export function generateStaticParams() {
@@ -40,8 +41,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default async function GaleriePage({ params }: PageProps) {
-  const { kategorie } = await params;
+export default async function GalleryCategoryPage({ params }: PageProps) {
+  const { locale, kategorie } = await params;
+  setRequestLocale(locale);
 
   // Validate slug
   const validSlugs = getCategorySlugs();
