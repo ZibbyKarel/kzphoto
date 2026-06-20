@@ -174,7 +174,7 @@ export function FocalAxis() {
               ref={(el) => {
                 if (el) labelRefs.current[i] = el;
               }}
-              className="text-muted font-sans ml-2 origin-left text-[11px] leading-none tabular-nums"
+              className="text-muted font-sans ml-4 origin-left text-[11px] leading-none tabular-nums"
               style={{ opacity: 0 }}
             >
               {tick.value}

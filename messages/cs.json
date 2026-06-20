@@ -55,6 +55,8 @@
   "gallery": {
     "eyebrow": "Galerie",
     "previewHeading": "Práce, která mluví za mě",
+    "allHeading": "Celá galerie",
+    "allIntro": "Všechny fotografie pohromadě — stačí scrollovat a projít celou tvorbu, roztříděnou podle kategorií.",
     "viewAll": "Zobrazit vše",
     "backToGallery": "Zpět na galerii",
     "otherCategories": "Další kategorie",

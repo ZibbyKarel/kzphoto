@@ -55,6 +55,8 @@
   "gallery": {
     "eyebrow": "Gallery",
     "previewHeading": "Work that speaks for me",
+    "allHeading": "The full gallery",
+    "allIntro": "Every photo in one place — just scroll through the whole body of work, sorted by category.",
     "viewAll": "View all",
     "backToGallery": "Back to the gallery",
     "otherCategories": "Other categories",
