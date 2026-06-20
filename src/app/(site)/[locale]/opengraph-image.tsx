@@ -1,6 +1,14 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
+
+// Required for `output: export` — one OG image per locale.
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export const size = {
   width: 1200,
@@ -9,15 +17,20 @@ export const size = {
 
 export const contentType = "image/png";
 
+// Required for `output: export` — render the OG image at build time per locale.
+export const dynamic = "force-static";
+
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const tf = await getTranslations({ locale, namespace: "footer" });
   const tm = await getTranslations({ locale, namespace: "meta" });
 
-  const logo = await fetch(new URL("./logo-mark.png", import.meta.url)).then((r) =>
-    r.arrayBuffer(),
+  // Read the logo from disk at build time — `fetch(file://…)` is unsupported under
+  // Turbopack's `output: export` worker, so load it via the filesystem instead.
+  const logo = await readFile(
+    join(process.cwd(), "src/app/(site)/[locale]/logo-mark.png"),
   );
-  const logoSrc = `data:image/png;base64,${Buffer.from(logo).toString("base64")}`;
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
     <div

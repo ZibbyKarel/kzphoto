@@ -11,12 +11,12 @@ export function ogLocale(locale: Locale): string {
 
 /**
  * Absolute, locale-prefixed URL for a locale-independent path.
- * Path is "" for the home page, or e.g. "/gallery/family". The default locale
- * (cs) is prefix-free; others get a "/<locale>" prefix.
+ * Path is "" for the home page, or e.g. "/gallery/family". Every locale carries
+ * its prefix (`/cs`, `/en`) and a trailing slash, matching the static export's
+ * directory-style output (`trailingSlash: true`).
  */
 export function localizedUrl(locale: Locale, path: string): string {
-  const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
-  return `${site.url}${prefix}${path}`;
+  return `${site.url}/${locale}${path}/`;
 }
 
 /** hreflang alternates for a path: every locale plus x-default → default locale. */

@@ -3,6 +3,9 @@ import { getCategorySlugs } from "@/lib/gallery";
 import { routing } from "@/i18n/routing";
 import { localizedUrl, languageAlternates } from "@/lib/metadata";
 
+// Required for `output: export` — emit a static sitemap.xml at build time.
+export const dynamic = "force-static";
+
 // Static date for deterministic builds — update on major content changes.
 const LAST_MODIFIED = new Date("2026-01-01");
 

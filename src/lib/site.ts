@@ -4,7 +4,7 @@
  */
 export const site = {
   name: "Karel Zíbar",
-  url: "https://example.cz",
+  url: "https://zibbykarel.github.io",
   email: "karel.zibar@icloud.com",
   phone: "+420 722 616 617",
   phoneHref: "tel:+420722616617",
