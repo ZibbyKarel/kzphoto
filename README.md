@@ -1,92 +1,65 @@
 # photo-web
 
-Portfolio a akviziční web pro fotografa (Plzeň a okolí) — rodinné focení, reality, krajiny.
-Designově laděné tmavé editoriální téma s plynulými scroll animacemi (GSAP), galerií rozdělenou
-do kategorií a funkčním kontaktním formulářem.
+Statický portfolio web pro fotografa (Plzeň a okolí). Next.js 16 (App Router) ve statickém
+exportu (`output: "export"` → složka `out/`), nasazený na **GitHub Pages** přes workflow
+`.github/workflows/nextjs.yml` (build běží automaticky po pushi do `main`).
 
-## Tech stack
-
-- **Next.js 16** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS v4** (CSS-first design tokeny v `globals.css`)
-- **GSAP + ScrollTrigger** (`@gsap/react`) — scroll animace, reduced-motion fallback
-- **Resend** + **zod** — kontaktní formulář (API route)
-- **next/image** + `sharp` — optimalizovaná galerie
-- **Vercel** — hosting, Analytics, Speed Insights
-
-## Vývoj
+## Skripty
 
 ```bash
-npm install
-npm run dev          # http://localhost:3000
-```
+npm install          # první instalace závislostí
 
-Další skripty:
+npm run dev          # vývojový server – http://localhost:3000
+npm run build        # produkční statický build do out/
+npm run gallery      # zpracuje fotky galerie + vygeneruje manifest (viz níže)
 
-```bash
-npm run build        # produkční build
-npm run typecheck    # tsc --noEmit
 npm run lint         # ESLint
-npm run format       # Prettier
-npm run gallery      # vygeneruje/zpracuje fotky galerie + manifest
+npm run typecheck    # tsc --noEmit
+npm run format       # Prettier (zápis)
 ```
 
-## Přizpůsobení obsahu
+Před nasazením má projít „zeleně": `npm run lint && npm run typecheck && npm run build`.
 
-| Co | Kde |
-| --- | --- |
-| Jméno, kontakt, Instagram, nav | `src/lib/site.ts` |
-| Texty sekcí, ceník, reference, FAQ | `src/lib/content.ts` |
-| Kategorie galerie a popisy | `src/lib/gallery.ts` |
-| Design tokeny (barvy, typografie) | `src/app/globals.css` (`@theme`) |
-| Strukturovaná data (SEO) | `src/components/seo/StructuredData.tsx` |
+### Fotky do galerie
 
-> **TODO před spuštěním:** v `src/lib/site.ts` jsou placeholdery (`Jméno Fotografa`,
-> `example.cz`, kontakty) — nahraď je skutečnými údaji.
+Vlož `.jpg/.jpeg/.png` do `gallery-source/<kategorie>/` (kategorie: `family`,
+`weddings-events`, `drone`, `other`) a spusť `npm run gallery`. Skript fotky zmenší, uloží do
+`public/gallery/<kategorie>/`, vytvoří blur placeholdery a přepíše `src/lib/gallery.generated.ts`.
 
-## Fotky do galerie
+### Kontaktní formulář
 
-Galerie je řízená manifestem `src/lib/gallery.generated.ts`, který generuje skript
-`scripts/generate-gallery.mjs`.
+Formulář odesílá přímo z prohlížeče přes [Web3Forms](https://web3forms.com) (statický web nemá
+server). Klíč `NEXT_PUBLIC_WEB3FORMS_KEY` je lokálně v `.env`, pro CI je nastavený přímo
+ve workflow. Je veřejný (inlinuje se do bundlu), takže to není tajemství.
 
-**Reálné fotky:** vlož soubory (`.jpg/.jpeg/.png`) do `gallery-source/<kategorie>/`
-(kategorie: `rodina`, `reality`, `priroda`) a spusť:
+## Změna domény / adresy, kde web běží
 
-```bash
-npm run gallery
-```
+Web teď běží na `https://zibbykarel.github.io/photo-web/`. URL adresa se skládá ze dvou částí,
+které je při změně potřeba upravit **obě**:
 
-Skript fotky zmenší (max 2000 px), uloží do `public/gallery/<kategorie>/`, vygeneruje blur
-placeholdery a přepíše manifest. Bez zdrojových fotek vygeneruje dočasné tonální placeholdery.
+| Co změnit | Kde | Hodnota |
+| --- | --- | --- |
+| Plná adresa webu (canonical, sitemap, OG) | `src/lib/site.ts` → `url` | celá URL bez koncového lomítka |
+| Pod-cesta, pod kterou Pages servíruje | `.github/workflows/nextjs.yml` → `NEXT_PUBLIC_BASE_PATH` | viz scénáře níže |
 
-> Po nahrazení placeholderů zkontroluj `alt` popisy v manifestu / skriptu — jsou důležité pro SEO.
-
-## Kontaktní formulář (Resend)
-
-Formulář odesílá přes [Resend](https://resend.com). Lokálně i v produkci nastav proměnné
-(viz `.env.example`):
+**Scénář A — jiný název repozitáře (zůstává na github.io):**
 
 ```
-RESEND_API_KEY=        # API klíč z Resend
-CONTACT_TO_EMAIL=      # kam chodí poptávky
-CONTACT_FROM_EMAIL=    # odesílací adresa na OVĚŘENÉ doméně v Resend
+src/lib/site.ts        url: "https://zibbykarel.github.io/<novy-repo>"
+nextjs.yml             NEXT_PUBLIC_BASE_PATH: /<novy-repo>
 ```
 
-Bez `RESEND_API_KEY` se web normálně sestaví i běží; formulář jen vrátí přívětivou hlášku, ať
-návštěvník napíše přímo na e-mail.
+**Scénář B — vlastní doména v kořeni (např. `https://fotograf.cz`):**
 
-## Nasazení na Vercel
+```
+src/lib/site.ts        url: "https://fotograf.cz"
+nextjs.yml             NEXT_PUBLIC_BASE_PATH: ""        # bez pod-cesty
+```
 
-1. Napoj GitHub repo na [Vercel](https://vercel.com/new) (Next.js se detekuje automaticky).
-2. V **Project Settings → Environment Variables** nastav `RESEND_API_KEY`, `CONTACT_TO_EMAIL`,
-   `CONTACT_FROM_EMAIL`.
-3. V Resend ověř odesílací **doménu** (DNS záznamy) — `CONTACT_FROM_EMAIL` musí být na ní.
-4. Po prvním deployi přidej vlastní **doménu** (Project → Domains) a v `src/lib/site.ts` nastav
-   `url` na produkční doménu (kvůli canonical URL, sitemap a OG).
-5. Analytics a Speed Insights se aktivují automaticky (komponenty jsou v `layout.tsx`); v
-   dashboardu je jen zapni.
-6. Odešli `sitemap.xml` do [Google Search Console](https://search.google.com/search-console).
+Navíc u vlastní domény nastav doménu v **Settings → Pages → Custom domain** (vytvoří `CNAME`)
+nebo přidej soubor `public/CNAME` s obsahem `fotograf.cz`.
 
-## Stav implementace
-
-Viz `docs/plans/01-implementacni-plan.md` — fáze označené ✅ jsou hotové.
-Odloženo na později: CMS (Sanity, F6) a blog (F9).
+> `NEXT_PUBLIC_BASE_PATH` se používá na dvou místech: jako `basePath` v `next.config.ts`
+> (prefix všech cest a assetů) a v kořenovém přesměrování `src/app/(root)/page.tsx`. Stačí
+> ho měnit jen ve workflow — obě místa si ho čtou ze stejné proměnné. Po úpravě commitni a
+> pushni do `main`; deploy proběhne sám.
