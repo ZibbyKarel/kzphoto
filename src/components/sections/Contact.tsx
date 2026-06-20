@@ -10,7 +10,7 @@ export function Contact() {
   const t = useTranslations("contact");
 
   return (
-    <Section id="kontakt" className="bg-surface border-border scroll-mt-24 border-t">
+    <Section id="contact" className="bg-surface border-border scroll-mt-24 border-t">
       <Container>
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:gap-24">
           {/* Form */}

@@ -8,10 +8,10 @@
  *
  * To use REAL photos:
  *   1. Place your source images (JPG/JPEG/PNG) into:
- *        gallery-source/rodina/
- *        gallery-source/svatby_udalosti/
- *        gallery-source/dron/
- *        gallery-source/ostatni/
+ *        gallery-source/family/
+ *        gallery-source/weddings-events/
+ *        gallery-source/drone/
+ *        gallery-source/other/
  *   2. Run: npm run gallery
  *   The script resizes them (max 2000px wide, quality 80) and writes them to
  *   public/gallery/<category>/, then regenerates the manifest.
@@ -32,20 +32,20 @@ const ROOT = path.resolve(__dirname, "..");
 
 const CATEGORIES = [
   {
-    slug: "rodina",
-    altPrefix: "Rodinné focení v Plzni",
+    slug: "family",
+    altPrefix: "Family photography in Plzeň",
   },
   {
-    slug: "svatby_udalosti",
-    altPrefix: "Svatba a událost v Plzni",
+    slug: "weddings-events",
+    altPrefix: "Wedding and event in Plzeň",
   },
   {
-    slug: "dron",
-    altPrefix: "Letecký snímek z dronu — Plzeňsko",
+    slug: "drone",
+    altPrefix: "Aerial drone shot — Plzeň region",
   },
   {
-    slug: "ostatni",
-    altPrefix: "Fotografie — Plzeň a okolí",
+    slug: "other",
+    altPrefix: "Photography — Plzeň & surroundings",
   },
 ];
 
@@ -64,7 +64,7 @@ const PLACEHOLDER_ASPECTS = [
 
 // Tonally-rich background colors per category
 const PLACEHOLDER_COLORS = {
-  rodina: [
+  family: [
     { r: 74, g: 50, b: 38 }, // deep umber
     { r: 92, g: 65, b: 45 }, // warm brown
     { r: 110, g: 80, b: 55 }, // sienna
@@ -74,7 +74,7 @@ const PLACEHOLDER_COLORS = {
     { r: 120, g: 88, b: 60 }, // warm tan
     { r: 95, g: 68, b: 48 }, // earthy
   ],
-  svatby_udalosti: [
+  "weddings-events": [
     { r: 220, g: 210, b: 195 }, // light cream
     { r: 210, g: 198, b: 182 }, // warm ivory
     { r: 225, g: 215, b: 200 }, // soft linen
@@ -84,7 +84,7 @@ const PLACEHOLDER_COLORS = {
     { r: 200, g: 190, b: 175 }, // antique linen
     { r: 218, g: 208, b: 193 }, // champagne
   ],
-  ostatni: [
+  other: [
     { r: 160, g: 100, b: 55 }, // warm amber
     { r: 175, g: 115, b: 65 }, // golden ochre
     { r: 145, g: 90, b: 48 }, // dark amber
@@ -94,7 +94,7 @@ const PLACEHOLDER_COLORS = {
     { r: 140, g: 85, b: 45 }, // deep ochre
     { r: 180, g: 120, b: 68 }, // golden brown
   ],
-  dron: [
+  drone: [
     { r: 38, g: 85, b: 105 }, // aerial teal
     { r: 45, g: 95, b: 118 }, // sky blue
     { r: 32, g: 75, b: 95 }, // deep aerial
@@ -248,47 +248,47 @@ async function main() {
 
       const blurDataURL = await generateBlurDataURL(buffer);
 
-      // Build a descriptive Czech alt text
+      // Build a descriptive alt text (kept in English; alt is not shown visually)
       const altDescriptions = {
-        rodina: [
-          "Rodina při společném výletu",
-          "Rodinný portrét venku",
-          "Dětský smích a radost",
-          "Rodinné objetí a teplo domova",
-          "Spontánní rodinný moment",
-          "Portréty v přirozeném světle",
-          "Rodinná procházka Plzní",
-          "Vzácné okamžiky rodinného života",
+        family: [
+          "Family on a trip together",
+          "Family portrait outdoors",
+          "Children's laughter and joy",
+          "A family embrace and the warmth of home",
+          "A spontaneous family moment",
+          "Portraits in natural light",
+          "A family walk through Plzeň",
+          "Precious moments of family life",
         ],
-        svatby_udalosti: [
-          "Svatební pár v objetí",
-          "Detail svatebních prstenů",
-          "Nevěsta před obřadem",
-          "První tanec novomanželů",
-          "Svatební hosté a emoce",
-          "Oslava v plném proudu",
-          "Společenská akce a nálada",
-          "Skupinové foto z události",
+        "weddings-events": [
+          "The wedding couple embracing",
+          "Close-up of the wedding rings",
+          "The bride before the ceremony",
+          "The newlyweds' first dance",
+          "Wedding guests and emotion",
+          "A celebration in full swing",
+          "A social event and its mood",
+          "Group photo from the event",
         ],
-        ostatni: [
-          "Fotografie z volné tvorby",
-          "Detail a atmosféra okamžiku",
-          "Portrét v přirozeném světle",
-          "Reportážní moment",
-          "Kompozice a hra světla",
-          "Okamžik zachycený mimo ateliér",
-          "Záběr z prostředí",
-          "Autentický moment",
+        other: [
+          "A photo from free creative work",
+          "Detail and atmosphere of a moment",
+          "A portrait in natural light",
+          "A reportage moment",
+          "Composition and play of light",
+          "A moment captured outside the studio",
+          "A shot from the surroundings",
+          "An authentic moment",
         ],
-        dron: [
-          "Letecký pohled na Plzeň",
-          "Krajina Plzeňska z ptačí perspektivy",
-          "Letecký snímek venkovní akce",
-          "Drone pohled na místo konání",
-          "Vzdušný záběr přírody Plzeňska",
-          "Letecká panorama města",
-          "Dron nad krajinou za soumraku",
-          "Letecký detail architektonické dominanty",
+        drone: [
+          "Aerial view of Plzeň",
+          "The Plzeň landscape from a bird's-eye view",
+          "Aerial shot of an outdoor event",
+          "Drone view of the venue",
+          "Aerial shot of Plzeň-region nature",
+          "Aerial panorama of the city",
+          "Drone over the landscape at dusk",
+          "Aerial detail of an architectural landmark",
         ],
       };
 

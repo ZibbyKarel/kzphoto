@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
@@ -19,7 +20,7 @@ export async function GalleryPreview() {
   const previewsByCat = await Promise.all(categories.map((cat) => getPreviewPhotos(cat.slug, 4)));
 
   return (
-    <Section id="galerie" className="border-border scroll-mt-24 border-t">
+    <Section id="gallery" className="border-border scroll-mt-24 border-t">
       <Container>
         <Stack gap="xl">
           {/* Section header */}
@@ -50,7 +51,7 @@ export async function GalleryPreview() {
                         </Text>
                       </Stack>
                       <ButtonLink
-                        href={`/galerie/${cat.slug}`}
+                        href={`/gallery/${cat.slug}`}
                         variant="ghost"
                         className="shrink-0 self-start sm:self-auto"
                       >
@@ -64,9 +65,9 @@ export async function GalleryPreview() {
                       className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3"
                     >
                       {previews.map((photo) => (
-                        <a
+                        <Link
                           key={photo.src}
-                          href={`/galerie/${cat.slug}`}
+                          href={`/gallery/${cat.slug}`}
                           className="group block overflow-hidden"
                           tabIndex={-1}
                           aria-hidden="true"
@@ -85,7 +86,7 @@ export async function GalleryPreview() {
                               className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
                             />
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </Reveal>
                   </Stack>

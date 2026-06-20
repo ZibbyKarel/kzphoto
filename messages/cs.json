@@ -61,19 +61,19 @@
     "titleSuffix": "Galerie",
     "notFound": "Stránka nenalezena",
     "categories": {
-      "rodina": {
+      "family": {
         "title": "Rodina",
         "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce."
       },
-      "svatby_udalosti": {
+      "weddings-events": {
         "title": "Svatby a jiné události",
         "description": "Svatby, oslavy, křtiny, firemní i společenské akce zachycené v pohybu."
       },
-      "dron": {
+      "drone": {
         "title": "Z dronu",
         "description": "Letecké snímky — místa a okamžiky z ptačí perspektivy."
       },
-      "ostatni": {
+      "other": {
         "title": "Ostatní",
         "description": "Volnější tvorba a momenty, které se nevešly do ostatních kategorií."
       }
@@ -86,25 +86,25 @@
     "enquire": "Nezávazně poptat",
     "note": "Uvedené ceny jsou zaváděcí — postupně si buduji portfolio a chci, aby kvalitní focení bylo dostupné. Každá zakázka je jiná; nestandardní požadavky nebo kombinaci služeb rád proberu individuálně.",
     "packages": {
-      "rodina": {
+      "family": {
         "title": "Rodinné focení",
         "price": "od 1 800 Kč",
         "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce.",
         "features": ["1–1,5 hodiny focení", "Online galerie", "25+ upravených fotek", "Dodání do 10 dnů"]
       },
-      "svatba": {
+      "wedding": {
         "title": "Svatba",
         "price": "od 8 900 Kč",
         "description": "Reportáž z vašeho svatebního dne.",
         "features": ["6–8 hodin focení", "300+ upravených fotek", "Online galerie ke stažení", "Konzultace předem"]
       },
-      "udalost": {
+      "event": {
         "title": "Události",
         "price": "od 1 500 Kč / hod",
         "description": "Oslavy, křtiny, firemní i společenské akce.",
         "features": ["Reportážní focení", "Online galerie", "Dodání do 10 dnů", "Flexibilní délka"]
       },
-      "dron": {
+      "drone": {
         "title": "Z dronu",
         "price": "od 1 200 Kč",
         "description": "Letecké snímky samostatně, nebo jako příplatek k jinému focení.",

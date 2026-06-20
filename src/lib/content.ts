@@ -13,10 +13,10 @@ export type PricingPackage = {
 };
 
 export const pricingPackages: PricingPackage[] = [
-  { id: "rodina", highlight: true },
-  { id: "svatba" },
-  { id: "udalost" },
-  { id: "dron" },
+  { id: "family", highlight: true },
+  { id: "wedding" },
+  { id: "event" },
+  { id: "drone" },
 ] as const;
 
 /* ---------------------------------------------------------------------------

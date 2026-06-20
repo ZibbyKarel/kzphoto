@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 type BuildMetadataOptions = {
   title?: string;
   description?: string;
-  /** Path relative to site root, e.g. "/galerie/rodina". Used for canonical URL. */
+  /** Path relative to site root, e.g. "/gallery/family". Used for canonical URL. */
   path?: string;
 };
 

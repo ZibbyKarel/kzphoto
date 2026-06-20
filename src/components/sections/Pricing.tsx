@@ -12,7 +12,7 @@ export function Pricing() {
   const t = useTranslations("pricing");
 
   return (
-    <Section id="cenik" className="border-border scroll-mt-24 border-t">
+    <Section id="pricing" className="border-border scroll-mt-24 border-t">
       <Container>
         <Stack gap="xl">
           {/* Section header */}
@@ -71,7 +71,7 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                <ButtonLink href="/#kontakt" variant={pkg.highlight ? "primary" : "ghost"}>
+                <ButtonLink href="/#contact" variant={pkg.highlight ? "primary" : "ghost"}>
                   {t("enquire")}
                 </ButtonLink>
               </div>

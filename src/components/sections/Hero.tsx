@@ -52,10 +52,10 @@ export function Hero() {
             {t("text")}
           </Text>
           <div className="flex flex-wrap gap-4 pt-2">
-            <ButtonLink href="/#kontakt" size="lg">
+            <ButtonLink href="/#contact" size="lg">
               {t("ctaPrimary")}
             </ButtonLink>
-            <ButtonLink href="/#galerie" variant="ghost" size="lg">
+            <ButtonLink href="/#gallery" variant="ghost" size="lg">
               {t("ctaSecondary")}
             </ButtonLink>
           </div>

@@ -11,39 +11,39 @@ import { getCategorySlugs, getPhotosByCategory, categories, isCategorySlug } fro
 import { buildMetadata } from "@/lib/metadata";
 
 type PageProps = {
-  params: Promise<{ locale: string; kategorie: string }>;
+  params: Promise<{ locale: string; category: string }>;
 };
 
 export function generateStaticParams() {
-  return getCategorySlugs().map((kategorie) => ({ kategorie }));
+  return getCategorySlugs().map((category) => ({ category }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { locale, kategorie } = await params;
+  const { locale, category } = await params;
   const t = await getTranslations({ locale, namespace: "gallery" });
 
-  if (!isCategorySlug(kategorie)) {
+  if (!isCategorySlug(category)) {
     return { title: t("notFound") };
   }
 
   // buildMetadata handles title (bare, for template), og:title (full), description,
   // canonical URL (prevents canonicalizing category pages to /), and OG/Twitter cards.
   return buildMetadata({
-    title: `${t(`categories.${kategorie}.title`)} — ${t("titleSuffix")}`,
-    description: t(`categories.${kategorie}.description`),
-    path: `/galerie/${kategorie}`,
+    title: `${t(`categories.${category}.title`)} — ${t("titleSuffix")}`,
+    description: t(`categories.${category}.description`),
+    path: `/gallery/${category}`,
   });
 }
 
 export default async function GalleryCategoryPage({ params }: PageProps) {
-  const { locale, kategorie } = await params;
+  const { locale, category } = await params;
   setRequestLocale(locale);
 
-  if (!isCategorySlug(kategorie)) {
+  if (!isCategorySlug(category)) {
     notFound();
   }
 
-  const slug = kategorie;
+  const slug = category;
   const t = await getTranslations("gallery");
   const photos = await getPhotosByCategory(slug);
 
@@ -57,7 +57,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
         <Container>
           <Stack gap="md" className="py-12 md:py-16">
             <Link
-              href="/#galerie"
+              href="/#gallery"
               className="text-muted hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
             >
               <svg
@@ -109,7 +109,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
                 {otherCategories.map((other) => (
                   <Link
                     key={other.slug}
-                    href={`/galerie/${other.slug}`}
+                    href={`/gallery/${other.slug}`}
                     className="border-border-strong hover:border-foreground hover:text-foreground text-muted inline-flex items-center gap-2 border px-5 py-2.5 text-sm transition-colors"
                   >
                     {t(`categories.${other.slug}.title`)}

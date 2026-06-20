@@ -10,7 +10,7 @@ export function About() {
   const t = useTranslations("about");
 
   return (
-    <Section id="o-mne" className="border-border scroll-mt-24 border-t">
+    <Section id="about" className="border-border scroll-mt-24 border-t">
       <Container>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
           {/* Portrait */}
@@ -37,7 +37,7 @@ export function About() {
                 <Text tone="muted">{t("p2")}</Text>
               </Stack>
 
-              <ButtonLink href="/#galerie" variant="ghost">
+              <ButtonLink href="/#gallery" variant="ghost">
                 {t("cta")}
               </ButtonLink>
             </Stack>

@@ -12,7 +12,7 @@ import { galleryPhotos } from "./gallery.generated";
    Types
 --------------------------------------------------------------------------- */
 
-export type CategorySlug = "rodina" | "svatby_udalosti" | "dron" | "ostatni";
+export type CategorySlug = "family" | "weddings-events" | "drone" | "other";
 
 export type GalleryPhoto = {
   category: CategorySlug;
@@ -33,10 +33,10 @@ export type GalleryCategory = {
 --------------------------------------------------------------------------- */
 
 export const categories: GalleryCategory[] = [
-  { slug: "rodina" },
-  { slug: "svatby_udalosti" },
-  { slug: "dron" },
-  { slug: "ostatni" },
+  { slug: "family" },
+  { slug: "weddings-events" },
+  { slug: "drone" },
+  { slug: "other" },
 ] as const;
 
 /* ---------------------------------------------------------------------------
