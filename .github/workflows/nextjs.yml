@@ -84,6 +84,11 @@ jobs:
           # If a custom domain (CNAME) is added, set this to "" (or switch to
           # `${{ steps.pages.outputs.base_path }}`).
           NEXT_PUBLIC_BASE_PATH: /photo-web
+          # Web3Forms access key for the contact form. Inlined into the client
+          # bundle at build time (NEXT_PUBLIC_), so it's public by design —
+          # hardcoded here because `.env` is git-ignored and never reaches CI.
+          # Prefer a repo variable? Swap for `${{ vars.NEXT_PUBLIC_WEB3FORMS_KEY }}`.
+          NEXT_PUBLIC_WEB3FORMS_KEY: 6a204cad-fe92-4779-98bc-4df47ae8e33b
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
