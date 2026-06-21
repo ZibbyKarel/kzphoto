@@ -79,17 +79,23 @@ export async function GalleryPreview() {
                           aria-hidden="true"
                         >
                           <div className="relative aspect-square overflow-hidden">
+                            {/*
+                             * `fill` (absolute inset-0) instead of width/height +
+                             * h-full: on iOS Safari < 16 a percentage-height image
+                             * inside an aspect-ratio-sized box collapses to 0 height
+                             * and the photo renders invisible. Absolute positioning
+                             * resolves height from the containing block, like Hero.
+                             */}
                             <Image
                               src={photo.src}
                               alt={photo.alt}
-                              width={photo.width}
-                              height={photo.height}
+                              fill
                               {...(photo.blurDataURL
                                 ? { placeholder: "blur" as const, blurDataURL: photo.blurDataURL }
                                 : {})}
                               loading="lazy"
                               sizes="(min-width: 640px) 25vw, 50vw"
-                              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
                             />
                           </div>
                         </Link>

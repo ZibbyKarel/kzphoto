@@ -26,6 +26,7 @@
     "eyebrow": "About me",
     "heading": "I photograph what can't be repeated",
     "p1": "I'm a photographer from Plzeň at the start of my journey — and I see that as a strength. I'm still building my name, so I pour my full attention and energy into every shoot. You're not just another booking in the queue; you're people whose moment I want to capture as well as I possibly can.",
+    "origin": "Photography began for me on trips and holidays — mostly aerial drone shots. The turning point came when my children were born. It started quietly: one photo every month to capture how my daughter was growing. Those monthly frames slowly grew into a genuine passion — themed sessions I staged with my wife at home. That journey is what taught me patience and a feel for the moment that won't come again.",
     "p2": "Family photography is what fulfils me most — spontaneous laughter, a hug, a look you can't pose for. I shoot both outdoors and indoors, but natural light is my domain. I work calmly and without rush, so everyone feels at ease in front of the lens. Alongside families, I also cover wedding reportage, events and aerial drone shots.",
     "cta": "See my work",
     "portraitLabel": "Photographer portrait"
@@ -90,6 +91,7 @@
     "heading": "Transparent pricing",
     "popular": "Most popular",
     "enquire": "Enquire — no obligation",
+    "editNote": "Extra edited photo +150 CZK",
     "note": "These are introductory prices — I'm gradually building my portfolio and want quality photography to be accessible. Every job is different; I'm happy to discuss non-standard requests or a combination of services individually.",
     "packages": {
       "family": {
@@ -99,8 +101,8 @@
         "features": [
           "1–1.5 hours of shooting",
           "Online gallery",
-          "10+ edited photos",
-          "Delivery within 10 days"
+          "10 edited photos",
+          "Delivery within 15 days"
         ]
       },
       "wedding": {
@@ -121,7 +123,7 @@
         "features": [
           "Reportage shooting",
           "Online gallery",
-          "Delivery within 10 days",
+          "Delivery within 15 days",
           "Flexible length"
         ]
       },
@@ -130,10 +132,10 @@
         "price": "from 1,200 CZK / hr",
         "description": "Products, e-shop, storefronts and team portraits for your website, social media and marketing.",
         "features": [
-          "Products & e-shop from 290 CZK/photo",
+          "Products & e-shop from 290 CZK/product (3+ photos per product)",
           "Storefront & interior from 2,500 CZK",
           "Team portraits from 1,200 CZK/person",
-          "Online gallery, delivery within 7 days"
+          "Online gallery, delivery within 15 days"
         ]
       },
       "drone": {
@@ -176,7 +178,7 @@
     "items": [
       {
         "question": "How long does editing take?",
-        "answer": "For family sessions and events, within 10 working days. For wedding reportage, expect 4–6 weeks — I carefully process every photo. If you need some of the photos sooner, we'll arrange it in advance."
+        "answer": "For family sessions and events, within 15 working days. For wedding reportage, expect 4–6 weeks — I carefully process every photo. If you need some of the photos sooner, we'll arrange it in advance."
       },
       {
         "question": "Do you shoot outdoors and indoors?",
@@ -188,7 +190,7 @@
       },
       {
         "question": "How does cancellation work?",
-        "answer": "A shoot can be rescheduled free of charge up to 48 hours in advance. In case of bad weather, we'll always set a new date. Cancellation within 24 hours or a no-show may be charged."
+        "answer": "A shoot can be rescheduled free of charge. In case of bad weather, we'll always set a new date."
       },
       {
         "question": "Do you offer gift vouchers?",

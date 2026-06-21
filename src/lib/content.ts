@@ -8,12 +8,13 @@
    Pricing — package order + highlight (text in messages: pricing.packages.<id>)
 --------------------------------------------------------------------------- */
 export type PricingPackage = {
-  id: string;
+  id: "family" | "wedding" | "event" | "commercial" | "drone";
   highlight?: boolean;
+  extraPhotoAvailable?: boolean;
 };
 
 export const pricingPackages: PricingPackage[] = [
-  { id: "family", highlight: true },
+  { id: "family" as const, highlight: true, extraPhotoAvailable: true },
   { id: "wedding" },
   { id: "event" },
   { id: "commercial" },

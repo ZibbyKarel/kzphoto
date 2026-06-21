@@ -1,12 +1,12 @@
-import { useTranslations } from "next-intl";
-import { Section } from "@/components/ui/Section";
+import { Reveal } from "@/components/animations/Reveal";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Label, Text, Title } from "@/components/ui/Typography";
-import { ButtonLink } from "@/components/ui/Button";
-import { pricingPackages } from "@/lib/content";
 import { cn } from "@/lib/cn";
-import { Reveal } from "@/components/animations/Reveal";
+import { pricingPackages } from "@/lib/content";
+import { useTranslations } from "next-intl";
 
 export function Pricing() {
   const t = useTranslations("pricing");
@@ -72,6 +72,12 @@ export function Pricing() {
                 <ButtonLink href="/#contact" variant={pkg.highlight ? "primary" : "ghost"}>
                   {t("enquire")}
                 </ButtonLink>
+
+                {pkg.extraPhotoAvailable && (
+                  <Text tone="faint" size="sm" className="-mt-3 text-center">
+                    {t("editNote")}
+                  </Text>
+                )}
               </div>
             ))}
           </Reveal>

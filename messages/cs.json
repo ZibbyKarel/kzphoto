@@ -26,6 +26,7 @@
     "eyebrow": "O mně",
     "heading": "Fotografuji to, co se nedá zopakovat",
     "p1": "Jsem fotograf z Plzně na začátku své cesty — a beru to jako přednost. Svoje jméno si teprve buduji, takže do každého focení dávám naprostou pozornost a energii. Nejste pro mě zakázka v řadě, ale lidé, jejichž okamžik chci zachytit co nejlíp.",
+    "origin": "K fotografii mě přivedla cestování — hlavně pak letecké záběry z dronu. Zlom přišel s narozením dětí. Začalo to nenápadně: jedna fotka každý měsíc, abych zachytil, jak dcera roste. Z těch měsíčních snímků se postupně stala opravdová vášeň — tématická focení, která jsem si se svou ženou aranžoval v domácích podmínkách. Právě tahle cesta mě naučila trpělivosti i citu pro okamžik, který se už nebude opakovat.",
     "p2": "Nejvíc mě naplňuje rodinné focení — spontánní smích, objetí, pohled, na který se nedá připravit. Fotím venku i v interiéru, ale přirozené světlo je moje doména. Pracuji klidně, bez spěchu, ať se před objektivem cítí každý pohodlně. Vedle rodiny se věnuji i svatebním reportážím, událostem a leteckým záběrům z dronu.",
     "cta": "Prohlédnout práci",
     "portraitLabel": "Portrét fotografa"
@@ -90,6 +91,7 @@
     "heading": "Transparentní ceny",
     "popular": "Nejoblíbenější",
     "enquire": "Nezávazně poptat",
+    "editNote": "Úprava fotky navíc +150 Kč",
     "note": "Uvedené ceny jsou zaváděcí — postupně si buduji portfolio a chci, aby kvalitní focení bylo dostupné. Každá zakázka je jiná; nestandardní požadavky nebo kombinaci služeb rád proberu individuálně.",
     "packages": {
       "family": {
@@ -99,8 +101,8 @@
         "features": [
           "1–1,5 hodiny focení",
           "Online galerie",
-          "10+ upravených fotek",
-          "Dodání do 10 dnů"
+          "10 upravených fotek",
+          "Dodání do 15 dnů"
         ]
       },
       "wedding": {
@@ -118,22 +120,17 @@
         "title": "Události",
         "price": "od 1 500 Kč / hod",
         "description": "Oslavy, křtiny, firemní i společenské akce.",
-        "features": [
-          "Reportážní focení",
-          "Online galerie",
-          "Dodání do 10 dnů",
-          "Flexibilní délka"
-        ]
+        "features": ["Reportážní focení", "Online galerie", "Dodání do 15 dnů", "Flexibilní délka"]
       },
       "commercial": {
         "title": "Reklamní focení",
         "price": "od 1 200 Kč / hod",
         "description": "Produkty, e-shop, provozovna i firemní portréty pro váš web, sociální sítě a marketing.",
         "features": [
-          "Produkty a e-shop od 290 Kč/foto",
+          "Produkty a e-shop od 290 Kč/product (3+ foto per produkt)",
           "Provozovna a interiér od 2 500 Kč",
           "Firemní portréty od 1 200 Kč/os.",
-          "Online galerie, dodání do 7 dnů"
+          "Online galerie, dodání do 15 dnů"
         ]
       },
       "drone": {
@@ -176,7 +173,7 @@
     "items": [
       {
         "question": "Jak dlouho trvá zpracování fotek?",
-        "answer": "U rodinného focení a akcí do 10 pracovních dnů. U svatební reportáže počítejte se 4–6 týdny — každou fotku pečlivě zpracuji. Pokud potřebujete část fotek dříve, domluvíme se předem."
+        "answer": "U rodinného focení a akcí do 15 pracovních dnů. U svatební reportáže počítejte se 4–6 týdny — každou fotku pečlivě zpracuji. Pokud potřebujete část fotek dříve, domluvíme se předem."
       },
       {
         "question": "Fotíte venku i uvnitř?",
@@ -188,7 +185,7 @@
       },
       {
         "question": "Jak funguje storno?",
-        "answer": "Focení lze přesunout bez poplatku nejpozději 48 hodin předem. V případě nepříznivého počasí termín vždy domluvíme nový. Storno do 24 hodin předem nebo nedostavení se může být zpoplatněno."
+        "answer": "Focení lze přesunout bez poplatku jen mi dejte včas vědět. V případě nepříznivého počasí termín vždy domluvíme nový."
       },
       {
         "question": "Nabízíte dárkové poukazy?",

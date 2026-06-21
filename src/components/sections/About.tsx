@@ -39,6 +39,7 @@ export function About() {
 
               <Stack gap="md">
                 <Text tone="muted">{t("p1")}</Text>
+                <Text tone="muted">{t("origin")}</Text>
                 <Text tone="muted">{t("p2")}</Text>
               </Stack>
 
