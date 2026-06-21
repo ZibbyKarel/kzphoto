@@ -8,7 +8,7 @@ export const site = {
   // canonical/sitemap/OG/robots URLs. Keep in sync with `basePath` (the repo
   // name) in next.config.ts; drop `/photo-web` if a custom domain is added.
   url: "https://kzphoto.cz",
-  email: "karel.zibar@icloud.com",
+  email: "kzphoto@icloud.com",
   phone: "+420 722 616 617",
   phoneHref: "tel:+420722616617",
   location: "Plzeň",

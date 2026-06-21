@@ -88,7 +88,7 @@ jobs:
           # bundle at build time (NEXT_PUBLIC_), so it's public by design —
           # hardcoded here because `.env` is git-ignored and never reaches CI.
           # Prefer a repo variable? Swap for `${{ vars.NEXT_PUBLIC_WEB3FORMS_KEY }}`.
-          NEXT_PUBLIC_WEB3FORMS_KEY: cab73c2c-444b-432f-a85f-a60f2dd28725
+          NEXT_PUBLIC_WEB3FORMS_KEY: 68a79222-0f50-4ac7-95cf-9dc69bda3f7d
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

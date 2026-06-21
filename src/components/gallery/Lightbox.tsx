@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import type { GalleryPhoto } from "@/lib/gallery";
@@ -23,6 +24,12 @@ export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: Ligh
   const total = photos.length;
   const ta = useTranslations("a11y");
 
+  // Rendered through a portal to document.body (see return) so the overlay
+  // escapes any transformed ancestor (e.g. the GSAP Reveal on the homepage). A
+  // `transform` on a parent creates a stacking/containing context, which
+  // otherwise scopes `position: fixed` to that parent instead of the viewport —
+  // letting page content and sibling thumbnails bleed over the lightbox.
+
   // Arrow key navigation (Escape is handled in useLightbox)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -33,9 +40,9 @@ export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: Ligh
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onNext, onPrev]);
 
-  if (!photo) return null;
+  if (!photo || typeof document === "undefined") return null;
 
-  return (
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
@@ -139,6 +146,7 @@ export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: Ligh
           {currentIndex + 1} / {total}
         </p>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
