@@ -8,7 +8,10 @@ import { Reveal } from "@/components/animations/Reveal";
 import type { GalleryPhoto } from "@/lib/gallery";
 
 type GalleryPreviewGridProps = {
+  /** Full photo set for the category — the lightbox browses all of these. */
   photos: GalleryPhoto[];
+  /** How many thumbnails to render in the grid (defaults to all photos). */
+  previewCount?: number;
 };
 
 /**
@@ -16,12 +19,18 @@ type GalleryPreviewGridProps = {
  * rather than navigating to the full gallery page. Reuses the gallery's
  * useLightbox + Lightbox so behaviour matches the standalone gallery.
  *
+ * Only the first `previewCount` photos are shown as thumbnails, but the lightbox
+ * is fed the whole `photos` array, so fullscreen next/prev browses the entire
+ * category. Thumbnails are the first N photos, so grid index === lightbox index.
+ *
  * Client component (lightbox state on click); the server parent resolves the
  * photos and passes them in.
  */
-export function GalleryPreviewGrid({ photos }: GalleryPreviewGridProps) {
+export function GalleryPreviewGrid({ photos, previewCount }: GalleryPreviewGridProps) {
   const lb = useLightbox();
   const ta = useTranslations("a11y");
+
+  const thumbnails = previewCount != null ? photos.slice(0, previewCount) : photos;
 
   const handleNext = () => lb.next(photos.length);
   const handlePrev = () => lb.prev(photos.length);
@@ -36,7 +45,7 @@ export function GalleryPreviewGrid({ photos }: GalleryPreviewGridProps) {
        * the photos vanish.
        */}
       <Reveal stagger={0.07} className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
-        {photos.map((photo, index) => (
+        {thumbnails.map((photo, index) => (
           <button
             key={photo.src}
             onClick={() => lb.open(index)}

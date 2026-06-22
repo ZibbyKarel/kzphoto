@@ -4,9 +4,12 @@ import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
-import { categories, getPreviewPhotos } from "@/lib/gallery";
+import { categories, getPhotosByCategory } from "@/lib/gallery";
 import { Reveal } from "@/components/animations/Reveal";
 import { GalleryPreviewGrid } from "./GalleryPreviewGrid";
+
+/** Number of preview thumbnails shown per category on the homepage. */
+const PREVIEW_COUNT = 4;
 
 /**
  * Homepage gallery preview section — shows 3 categories with 4 preview images each
@@ -15,15 +18,18 @@ import { GalleryPreviewGrid } from "./GalleryPreviewGrid";
  */
 export async function GalleryPreview() {
   const t = await getTranslations("gallery");
-  // Resolve photos for each category upfront (cannot await inside the .map render).
-  const previewsByCat = await Promise.all(categories.map((cat) => getPreviewPhotos(cat.slug, 4)));
+  // Resolve the full photo set for each category upfront (cannot await inside the
+  // .map render). The grid renders only the first PREVIEW_COUNT as thumbnails but
+  // feeds the complete set to the lightbox, so fullscreen browsing covers the
+  // whole category — not just the previews.
+  const photosByCat = await Promise.all(categories.map((cat) => getPhotosByCategory(cat.slug)));
 
-  // Pair each category with its previews and drop the empty ones — a category
+  // Pair each category with its photos and drop the empty ones — a category
   // with no photos yet (e.g. a newly added one) would otherwise render a broken
   // heading with an empty grid.
   const blocks = categories
-    .map((cat, index) => ({ cat, previews: previewsByCat[index] }))
-    .filter((block) => block.previews.length > 0);
+    .map((cat, index) => ({ cat, photos: photosByCat[index] }))
+    .filter((block) => block.photos.length > 0);
 
   return (
     <Section id="gallery" className="border-border scroll-mt-24 border-t">
@@ -41,7 +47,7 @@ export async function GalleryPreview() {
 
           {/* Category blocks — Reveal becomes the grid, children are category blocks */}
           <Reveal stagger={0.12} className="grid w-full grid-cols-1 gap-16 md:gap-20">
-            {blocks.map(({ cat, previews }) => {
+            {blocks.map(({ cat, photos }) => {
               return (
                 <div key={cat.slug}>
                   <Stack gap="lg">
@@ -64,8 +70,9 @@ export async function GalleryPreview() {
                       </ButtonLink>
                     </div>
 
-                    {/* Preview grid — clicking a photo opens it in the lightbox in place */}
-                    <GalleryPreviewGrid photos={previews} />
+                    {/* Preview grid — shows the first PREVIEW_COUNT thumbnails; the
+                     * lightbox browses the whole category. */}
+                    <GalleryPreviewGrid photos={photos} previewCount={PREVIEW_COUNT} />
                   </Stack>
                 </div>
               );
