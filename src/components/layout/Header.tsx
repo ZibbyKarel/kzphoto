@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { titleClasses } from "@/components/ui/Typography";
 import { useScrolled } from "@/hooks/useScrolled";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
 import { useTranslations } from "next-intl";
@@ -17,6 +17,18 @@ export function Header() {
   const t = useTranslations("nav");
   const ta = useTranslations("a11y");
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // On the home page the logo link is a no-op route change, so scroll to top
+  // instead. From other pages (e.g. gallery) let the Link navigate normally.
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMenuOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    }
+  };
 
   return (
     <>
@@ -43,7 +55,7 @@ export function Header() {
             href="/"
             aria-label={site.name}
             className="flex items-center gap-3 md:gap-4"
-            onClick={() => setMenuOpen(false)}
+            onClick={handleLogoClick}
           >
             <Logo priority className="mt-10 h-18 w-18 md:h-20 md:w-20" />
             <span aria-hidden="true" className="bg-border-strong hidden h-7 w-px sm:block" />

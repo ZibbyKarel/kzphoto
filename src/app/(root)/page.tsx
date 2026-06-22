@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { site } from "@/lib/site";
+import { localizedUrl, ogLocale, ogImage } from "@/lib/metadata";
 
 /**
  * Locale-redirect stub served at `/`.
@@ -13,9 +16,41 @@ import { routing } from "@/i18n/routing";
  *
  * `<meta>` / `<script>` rendered here are hoisted into `<head>` by React.
  */
-export const metadata: Metadata = {
-  robots: { index: false, follow: false },
-};
+// The bare `/` is what gets shared when someone types the domain without a
+// locale prefix. Crawlers don't follow the meta-refresh redirect below, so give
+// this stub the same OG/Twitter card as the default-locale home page (+
+// metadataBase, so the relative og-image path resolves to an absolute URL).
+// Stays noindex — only the localized pages should be indexed.
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  const tc = await getTranslations({ locale, namespace: "common" });
+  const title = `${site.name} — ${tc("tagline")}`;
+  const description = t("description");
+  const canonical = localizedUrl(locale, "");
+
+  return {
+    metadataBase: new URL(site.url),
+    title,
+    description,
+    robots: { index: false, follow: false },
+    openGraph: {
+      siteName: site.name,
+      locale: ogLocale(locale),
+      type: "website",
+      url: canonical,
+      title,
+      description,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage.url],
+    },
+  };
+}
 
 const { defaultLocale, locales } = routing;
 

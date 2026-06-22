@@ -7,6 +7,7 @@ import { Eyebrow, Heading, Label, Text, Title } from "@/components/ui/Typography
 import { cn } from "@/lib/cn";
 import { pricingPackages } from "@/lib/content";
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 
 export function Pricing() {
   const t = useTranslations("pricing");
@@ -54,30 +55,37 @@ export function Pricing() {
 
                 <div className="border-border border-t pt-6">
                   <Title as="p" size="3xl">
-                    {t(`packages.${pkg.id}.price`)}
+                    {pkg.perHour
+                      ? t("pricePerHour", { amount: pkg.price })
+                      : t("price", { amount: pkg.price })}
                   </Title>
                 </div>
 
+                {/*
+                 * Uniform feature rows, composed from the per-service config
+                 * (src/lib/content.ts). Order: hours → base photos → extra-photo
+                 * price → delivery. A row is omitted when its value is unset.
+                 */}
                 <ul className="flex flex-1 flex-col gap-2">
-                  {(t.raw(`packages.${pkg.id}.features`) as string[]).map((feature) => (
-                    <li key={feature} className="text-muted flex items-start gap-2 text-sm">
-                      <span className="text-accent mt-0.5 select-none" aria-hidden="true">
-                        —
-                      </span>
-                      {feature}
-                    </li>
-                  ))}
+                  {pkg.hours && (
+                    <Feature>
+                      {t("feature.hours", { min: pkg.hours[0], max: pkg.hours[1] })}
+                    </Feature>
+                  )}
+                  {pkg.basePhotos != null && (
+                    <Feature>{t("feature.basePhotos", { count: pkg.basePhotos })}</Feature>
+                  )}
+                  {pkg.extraPhotoPrice != null && (
+                    <Feature>{t("feature.extraPhoto", { amount: pkg.extraPhotoPrice })}</Feature>
+                  )}
+                  {pkg.deliveryDays != null && (
+                    <Feature>{t("feature.delivery", { days: pkg.deliveryDays })}</Feature>
+                  )}
                 </ul>
 
                 <ButtonLink href="/#contact" variant={pkg.highlight ? "primary" : "ghost"}>
                   {t("enquire")}
                 </ButtonLink>
-
-                {pkg.extraPhotoAvailable && (
-                  <Text tone="faint" size="sm" className="-mt-3 text-center">
-                    {t("editNote")}
-                  </Text>
-                )}
               </div>
             ))}
           </Reveal>
@@ -89,5 +97,16 @@ export function Pricing() {
         </Stack>
       </Container>
     </Section>
+  );
+}
+
+function Feature({ children }: { children: ReactNode }) {
+  return (
+    <li className="text-muted flex items-start gap-2 text-sm">
+      <span className="text-accent mt-0.5 select-none" aria-hidden="true">
+        —
+      </span>
+      {children}
+    </li>
   );
 }

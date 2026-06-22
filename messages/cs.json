@@ -87,58 +87,35 @@
     "heading": "Transparentní ceny",
     "popular": "Nejoblíbenější",
     "enquire": "Nezávazně poptat",
-    "editNote": "Úprava fotky navíc +150 Kč",
+    "price": "od {amount, number} Kč",
+    "pricePerHour": "od {amount, number} Kč / hod",
+    "feature": {
+      "hours": "{min, number}–{max, number} h focení",
+      "basePhotos": "{count, number} upravených fotek v ceně",
+      "extraPhoto": "Fotka navíc +{amount, number} Kč",
+      "delivery": "Dodání do {days, number} dnů"
+    },
     "note": "Uvedené ceny jsou zaváděcí — postupně si buduji portfolio a chci, aby kvalitní focení bylo dostupné. Každá zakázka je jiná; nestandardní požadavky nebo kombinaci služeb rád proberu individuálně.",
     "packages": {
       "family": {
         "title": "Rodinné focení",
-        "price": "od 1 800 Kč",
-        "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce.",
-        "features": [
-          "1–1,5 hodiny focení",
-          "Online galerie",
-          "10 upravených fotek",
-          "Dodání do 15 dnů"
-        ]
+        "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce."
       },
       "wedding": {
         "title": "Svatba",
-        "price": "od 8 900 Kč",
-        "description": "Reportáž z vašeho svatebního dne.",
-        "features": [
-          "6–8 hodin focení",
-          "300+ upravených fotek",
-          "Online galerie ke stažení",
-          "Konzultace předem"
-        ]
+        "description": "Reportáž z vašeho svatebního dne."
       },
       "event": {
         "title": "Události",
-        "price": "od 1 500 Kč / hod",
-        "description": "Oslavy, křtiny, firemní i společenské akce.",
-        "features": ["Reportážní focení", "Online galerie", "Dodání do 15 dnů", "Flexibilní délka"]
+        "description": "Oslavy, křtiny, firemní i společenské akce."
       },
       "commercial": {
         "title": "Reklamní focení",
-        "price": "od 1 200 Kč / hod",
-        "description": "Produkty, e-shop, provozovna i firemní portréty pro váš web, sociální sítě a marketing.",
-        "features": [
-          "Produkty a e-shop od 290 Kč/product (3+ foto per produkt)",
-          "Provozovna a interiér od 2 500 Kč",
-          "Firemní portréty od 1 200 Kč/os.",
-          "Online galerie, dodání do 15 dnů"
-        ]
+        "description": "Produkty, e-shop, provozovna i firemní portréty pro váš web, sociální sítě a marketing."
       },
       "drone": {
         "title": "Z dronu",
-        "price": "od 1 200 Kč",
-        "description": "Letecké snímky samostatně, nebo jako příplatek k jinému focení.",
-        "features": [
-          "Letecké foto z dronu",
-          "Jako doplněk focení od 800 Kč",
-          "Dle počasí a lokality",
-          "Úprava v ceně"
-        ]
+        "description": "Letecké snímky samostatně, nebo jako příplatek k jinému focení."
       }
     }
   },

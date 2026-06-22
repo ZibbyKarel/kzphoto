@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { pricingPackages } from "@/lib/content";
 import { site } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
 
@@ -6,15 +7,10 @@ import type { Locale } from "@/i18n/routing";
  * JSON-LD structured data for LocalBusiness / ProfessionalService.
  * ProfessionalService is a sub-type of LocalBusiness and the appropriate
  * schema.org type for a photographer offering paid services.
- * Names/descriptions are pulled from the localized pricing messages.
+ * Names/descriptions are pulled from the localized pricing messages; prices come
+ * from the single source of truth in `src/lib/content.ts`.
  */
-const OFFERS = [
-  { id: "family", price: "1800" },
-  { id: "wedding", price: "8900" },
-  { id: "event", price: "1500" },
-  { id: "commercial", price: "1200" },
-  { id: "drone", price: "1200" },
-] as const;
+const OFFERS = pricingPackages.map((p) => ({ id: p.id, price: String(p.price) }));
 
 export async function StructuredData({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "pricing" });

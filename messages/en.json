@@ -87,63 +87,35 @@
     "heading": "Transparent pricing",
     "popular": "Most popular",
     "enquire": "Enquire — no obligation",
-    "editNote": "Extra edited photo +150 CZK",
+    "price": "from {amount, number} CZK",
+    "pricePerHour": "from {amount, number} CZK / hour",
+    "feature": {
+      "hours": "{min, number}–{max, number} h of shooting",
+      "basePhotos": "{count, number} edited photos included",
+      "extraPhoto": "Extra photo +{amount, number} CZK",
+      "delivery": "Delivery within {days, number} days"
+    },
     "note": "These are introductory prices — I'm gradually building my portfolio and want quality photography to be accessible. Every job is different; I'm happy to discuss non-standard requests or a combination of services individually.",
     "packages": {
       "family": {
         "title": "Family session",
-        "price": "from 1,800 CZK",
-        "description": "Set up at your home in an improvised studio or outdoors — beautiful photos can happen anywhere, with anything, you just have to put a little work into it.",
-        "features": [
-          "1–1.5 hours of shooting",
-          "Online gallery",
-          "10 edited photos",
-          "Delivery within 15 days"
-        ]
+        "description": "Set up at your home in an improvised studio or outdoors — beautiful photos can happen anywhere, with anything, you just have to put a little work into it."
       },
       "wedding": {
         "title": "Wedding",
-        "price": "from 8,900 CZK",
-        "description": "Reportage of your wedding day.",
-        "features": [
-          "6–8 hours of shooting",
-          "300+ edited photos",
-          "Online gallery to download",
-          "Consultation beforehand"
-        ]
+        "description": "Reportage of your wedding day."
       },
       "event": {
         "title": "Events",
-        "price": "from 1,500 CZK / hour",
-        "description": "Celebrations, christenings, corporate and social events.",
-        "features": [
-          "Reportage shooting",
-          "Online gallery",
-          "Delivery within 15 days",
-          "Flexible length"
-        ]
+        "description": "Celebrations, christenings, corporate and social events."
       },
       "commercial": {
         "title": "Commercial",
-        "price": "from 1,200 CZK / hr",
-        "description": "Products, e-shop, storefronts and team portraits for your website, social media and marketing.",
-        "features": [
-          "Products & e-shop from 290 CZK/product (3+ photos per product)",
-          "Storefront & interior from 2,500 CZK",
-          "Team portraits from 1,200 CZK/person",
-          "Online gallery, delivery within 15 days"
-        ]
+        "description": "Products, e-shop, storefronts and team portraits for your website, social media and marketing."
       },
       "drone": {
         "title": "From the drone",
-        "price": "from 1,200 CZK",
-        "description": "Aerial shots on their own, or as an add-on to another shoot.",
-        "features": [
-          "Aerial drone photo",
-          "As a shoot add-on from 800 CZK",
-          "Subject to weather and location",
-          "Editing included"
-        ]
+        "description": "Aerial shots on their own, or as an add-on to another shoot."
       }
     }
   },
