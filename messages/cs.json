@@ -105,6 +105,11 @@
         "title": "Rodinné focení",
         "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce."
       },
+      "birthday": {
+        "title": "Narozeninové focení",
+        "description": "Hravé focení k narozeninám dětí i dospělých — s číslicí, dortíkem a rekvizitami dle věku a přání oslavence.",
+        "note": "Balonková výzdoba je v ceně — barvy i styl přizpůsobím vašemu přání. Jinou výzdobu rád zajistím po domluvě."
+      },
       "wedding": {
         "title": "Svatba",
         "description": "Reportáž z vašeho svatebního dne."
