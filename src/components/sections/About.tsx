@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { withBasePath } from "@/lib/asset";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
@@ -18,7 +17,7 @@ export function About() {
           <div className="order-2 md:order-1">
             <div className="bg-surface relative aspect-4/5 w-full max-w-sm overflow-hidden md:max-w-none">
               <Image
-                src={withBasePath("/me.png")}
+                src="/me.png"
                 alt={t("portraitLabel")}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

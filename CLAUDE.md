@@ -11,7 +11,8 @@ for phases. Deferred: blog.
 
 ## Stack
 
-- **Next.js 16** (App Router, **static export** `output: "export"` → `out/`) + React 19 + TypeScript.
+- **Next.js 16** (App Router) + React 19 + TypeScript. Deployed to **Vercel** (not a static
+  export — see Deployment below).
 - **Tailwind v4** — CSS-first tokens in `src/app/globals.css` `@theme`; no `tailwind.config`.
 - **next-intl** for i18n. **GSAP** (`@gsap/react` `useGSAP`) for animations.
 - **Sanity** as an *optional* CMS layer (see below). **Web3Forms** for the contact form.
@@ -24,12 +25,13 @@ build all pass (run all three before declaring done).
 
 ## Architecture
 
-### i18n — prefix-always, no middleware
-- Routing config: `src/i18n/routing.ts` (`localePrefix: "always"`, locales `cs`/`en`, default `cs`).
-  Every locale carries a prefix (`/cs`, `/en`) — a static export has no middleware to serve the
-  default locale prefix-free. The bare `/` is a client-side language-redirect stub
-  (`src/app/(root)/page.tsx`).
-- Routes live under `src/app/(site)/[locale]/`; `(root)` holds only the redirect stub.
+### i18n — prefix-as-needed, via middleware
+- Routing config: `src/i18n/routing.ts` (`localePrefix: "as-needed"`, locales `cs`/`en`, default
+  `cs`). The default locale (`cs`) is served unprefixed at `/`; `en` carries `/en`. Enforced by
+  `src/middleware.ts` (next-intl's `createMiddleware`), which also redirects `/cs/...` to the
+  unprefixed path.
+- Routes live under `src/app/(site)/[locale]/`, which is the sole top-level route group (its
+  `layout.tsx` is the app's root `<html>` layout).
 - Server pages must call `setRequestLocale(locale)` (see `[locale]/page.tsx`).
 - **All display copy lives in `messages/{cs,en}.json`** and is read via `useTranslations` /
   `getTranslations`. `src/lib/` holds only locale-*independent* structure (ids, ordering,
@@ -63,13 +65,14 @@ build all pass (run all three before declaring done).
   `src/hooks/useContactForm.ts`; validation via shared `src/lib/contact-schema.ts` (zod). Has a
   honeypot (`website` field). No server — static-export friendly.
 
-### Deployment — GitHub Pages
-- CI builds and deploys on push to `main` (`.github/workflows/nextjs.yml`).
-- Served under a project-pages sub-path, so all routes/assets are prefixed via `basePath` in
-  `next.config.ts`, fed by `NEXT_PUBLIC_BASE_PATH` (set in the workflow). Static asset URLs go
-  through `withBasePath` (`src/lib/asset.ts`).
-- Changing domain/repo: update `site.ts` `url` **and** the workflow's `NEXT_PUBLIC_BASE_PATH`
-  (see README scenarios A/B). `images.unoptimized` + `trailingSlash` are required by the export.
+### Deployment — Vercel
+- Deployed via Vercel's git integration (build + deploy on push to `main`); no GitHub Actions
+  workflow. Env vars (`NEXT_PUBLIC_WEB3FORMS_KEY`, optional Sanity vars) live in the Vercel
+  project's Environment Variables settings, not in the repo.
+- No `output: "export"`, no `basePath`, no `images.unoptimized` — Next's Image Optimization and
+  middleware run normally. `trailingSlash: true` is kept for URL continuity with the site's
+  previous GitHub Pages export.
+- Custom domain `kzphoto.cz` is configured on the Vercel project; `site.ts` `url` must match it.
 
 ## graphify
 

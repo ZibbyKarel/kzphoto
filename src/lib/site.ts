@@ -4,9 +4,7 @@
  */
 export const site = {
   name: "Karel Zíbar",
-  // Public origin incl. the GitHub project-pages sub-path — used for absolute
-  // canonical/sitemap/OG/robots URLs. Keep in sync with `basePath` (the repo
-  // name) in next.config.ts; drop `/photo-web` if a custom domain is added.
+  // Public origin — used for absolute canonical/sitemap/OG/robots URLs.
   url: "https://kzphoto.cz",
   email: "kzphoto@icloud.com",
   phone: "+420 722 616 617",
