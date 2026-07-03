@@ -83,6 +83,12 @@ export function Pricing() {
                   )}
                 </ul>
 
+                {t.has(`packages.${pkg.id}.note`) && (
+                  <Text size="sm" className="text-accent font-medium">
+                    {t(`packages.${pkg.id}.note`)}
+                  </Text>
+                )}
+
                 <ButtonLink href="/#contact" variant={pkg.highlight ? "primary" : "ghost"}>
                   {t("enquire")}
                 </ButtonLink>

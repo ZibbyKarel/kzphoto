@@ -18,7 +18,7 @@
    under `pricing.packages.<id>`.
 --------------------------------------------------------------------------- */
 export type PricingPackage = {
-  id: "family" | "wedding" | "event" | "commercial" | "drone";
+  id: "family" | "birthday" | "wedding" | "event" | "commercial" | "drone";
   highlight?: boolean;
   /** Headline "from" price, in CZK. */
   price: number;
@@ -40,6 +40,14 @@ export const pricingPackages: PricingPackage[] = [
     highlight: true,
     price: 1500,
     hours: [1, 1.5],
+    basePhotos: 10,
+    extraPhotoPrice: 150,
+    deliveryDays: 15,
+  },
+  {
+    id: "birthday",
+    price: 2200,
+    hours: [0.5, 1],
     basePhotos: 10,
     extraPhotoPrice: 150,
     deliveryDays: 15,
