@@ -12,6 +12,7 @@
     "openMenu": "Otevřít menu",
     "closeMenu": "Zavřít menu",
     "openPhoto": "Otevřít: {alt}",
+    "lightboxLabel": "Prohlížeč fotek — {alt}",
     "closeLightbox": "Zavřít lightbox",
     "prevPhoto": "Předchozí fotografie",
     "nextPhoto": "Další fotografie"

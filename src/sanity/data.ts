@@ -1,9 +1,9 @@
 /**
- * Sanity datová vrstva — čte fotky a reference ze Sanity.
+ * Sanity data layer — reads photos and testimonials from Sanity.
  *
- * Tyto funkce volej POUZE když je `isSanityConfigured === true`. Mapují
- * Sanity odpověď na PŘESNĚ stejné tvary, jaké používá statický obsah
- * (`GalleryPhoto`, `Testimonial`), aby komponenty fungovaly beze změny.
+ * Call these functions ONLY when `isSanityConfigured === true`. They map the
+ * Sanity response onto the EXACT SAME shapes used by the static content
+ * (`GalleryPhoto`, `Testimonial`), so components work unchanged.
  */
 
 import "server-only";
@@ -32,7 +32,7 @@ type SanityTestimonial = {
   quote: string | null;
 };
 
-/** Načte fotky kategorie ze Sanity a namapuje je na `GalleryPhoto`. */
+/** Fetches a category's photos from Sanity and maps them onto `GalleryPhoto`. */
 export async function fetchPhotosByCategory(category: CategorySlug): Promise<GalleryPhoto[]> {
   if (!client) return [];
   const rows = await client.fetch<SanityPhoto[]>(photosByCategoryQuery, { category });
@@ -49,14 +49,14 @@ export async function fetchPhotosByCategory(category: CategorySlug): Promise<Gal
         width: dims.width,
         height: dims.height,
         alt: row.alt ?? "",
-        // LQIP je base64 data URL → použitelné jako blurDataURL.
+        // LQIP is a base64 data URL → usable directly as blurDataURL.
         blurDataURL: row.asset?.lqip ?? "",
       },
     ];
   });
 }
 
-/** Načte reference ze Sanity a namapuje je na `Testimonial` (quote → text). */
+/** Fetches testimonials from Sanity and maps them onto `Testimonial` (quote → text). */
 export async function fetchTestimonials(): Promise<Testimonial[]> {
   if (!client) return [];
   const rows = await client.fetch<SanityTestimonial[]>(testimonialsQuery, {});

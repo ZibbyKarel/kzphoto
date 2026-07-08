@@ -8,6 +8,7 @@ import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Label, Text } from "@/components/ui/Typography";
 import { TextLink } from "@/components/ui/Link";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/ui/icons";
 import { getCategorySlugs, getPhotosByCategory, categories, isCategorySlug } from "@/lib/gallery";
 import { buildMetadata } from "@/lib/metadata";
 import type { Locale } from "@/i18n/routing";
@@ -63,20 +64,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
         <Container>
           <Stack gap="md" className="py-12 md:py-16">
             <TextLink href="/#gallery" className="inline-flex items-center gap-2 text-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
+              <ChevronLeftIcon width={16} height={16} />
               {t("backToGallery")}
             </TextLink>
 
@@ -116,20 +104,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
                     className="border-border-strong hover:border-foreground hover:text-foreground text-muted inline-flex items-center gap-2 border px-5 py-2.5 text-sm transition-colors"
                   >
                     {t(`categories.${other.slug}.title`)}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
+                    <ChevronRightIcon width={14} height={14} />
                   </Link>
                 ))}
               </div>
