@@ -57,7 +57,7 @@ export function getCategorySlugs(): CategorySlug[] {
  * Sorts photos by pixel area (width × height) descending — the largest photos
  * come first. Returns a new array; the input is not mutated.
  */
-function sortByLargestFirst(photos: readonly GalleryPhoto[]): GalleryPhoto[] {
+export function sortByLargestFirst(photos: readonly GalleryPhoto[]): GalleryPhoto[] {
   return [...photos].sort((a, b) => b.width * b.height - a.width * a.height);
 }
 

@@ -34,7 +34,8 @@ const TICKS: Tick[] = (() => {
 })();
 const LAST = TICKS.length - 1;
 
-function focalAt(progress: number): number {
+/** Exported for unit testing — pure, side-effect-free. */
+export function focalAt(progress: number): number {
   const x = progress * (FOCALS.length - 1);
   const i = Math.min(FOCALS.length - 2, Math.floor(x));
   const frac = x - i;
