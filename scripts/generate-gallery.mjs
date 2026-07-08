@@ -62,6 +62,50 @@ const PLACEHOLDER_ASPECTS = [
   [800, 1200], // portrait 2/3
 ];
 
+// Descriptive alt text per category (kept in English; alt is not shown visually)
+const ALT_DESCRIPTIONS = {
+  family: [
+    "Family on a trip together",
+    "Family portrait outdoors",
+    "Children's laughter and joy",
+    "A family embrace and the warmth of home",
+    "A spontaneous family moment",
+    "Portraits in natural light",
+    "A family walk through Plzeň",
+    "Precious moments of family life",
+  ],
+  "weddings-events": [
+    "The wedding couple embracing",
+    "Close-up of the wedding rings",
+    "The bride before the ceremony",
+    "The newlyweds' first dance",
+    "Wedding guests and emotion",
+    "A celebration in full swing",
+    "A social event and its mood",
+    "Group photo from the event",
+  ],
+  other: [
+    "A photo from free creative work",
+    "Detail and atmosphere of a moment",
+    "A portrait in natural light",
+    "A reportage moment",
+    "Composition and play of light",
+    "A moment captured outside the studio",
+    "A shot from the surroundings",
+    "An authentic moment",
+  ],
+  drone: [
+    "Aerial view of Plzeň",
+    "The Plzeň landscape from a bird's-eye view",
+    "Aerial shot of an outdoor event",
+    "Drone view of the venue",
+    "Aerial shot of Plzeň-region nature",
+    "Aerial panorama of the city",
+    "Drone over the landscape at dusk",
+    "Aerial detail of an architectural landmark",
+  ],
+};
+
 // Tonally-rich background colors per category
 const PLACEHOLDER_COLORS = {
   family: [
@@ -248,51 +292,7 @@ async function main() {
 
       const blurDataURL = await generateBlurDataURL(buffer);
 
-      // Build a descriptive alt text (kept in English; alt is not shown visually)
-      const altDescriptions = {
-        family: [
-          "Family on a trip together",
-          "Family portrait outdoors",
-          "Children's laughter and joy",
-          "A family embrace and the warmth of home",
-          "A spontaneous family moment",
-          "Portraits in natural light",
-          "A family walk through Plzeň",
-          "Precious moments of family life",
-        ],
-        "weddings-events": [
-          "The wedding couple embracing",
-          "Close-up of the wedding rings",
-          "The bride before the ceremony",
-          "The newlyweds' first dance",
-          "Wedding guests and emotion",
-          "A celebration in full swing",
-          "A social event and its mood",
-          "Group photo from the event",
-        ],
-        other: [
-          "A photo from free creative work",
-          "Detail and atmosphere of a moment",
-          "A portrait in natural light",
-          "A reportage moment",
-          "Composition and play of light",
-          "A moment captured outside the studio",
-          "A shot from the surroundings",
-          "An authentic moment",
-        ],
-        drone: [
-          "Aerial view of Plzeň",
-          "The Plzeň landscape from a bird's-eye view",
-          "Aerial shot of an outdoor event",
-          "Drone view of the venue",
-          "Aerial shot of Plzeň-region nature",
-          "Aerial panorama of the city",
-          "Drone over the landscape at dusk",
-          "Aerial detail of an architectural landmark",
-        ],
-      };
-
-      const descriptions = altDescriptions[slug];
+      const descriptions = ALT_DESCRIPTIONS[slug];
       const alt = `${altPrefix} — ${descriptions[(index - 1) % descriptions.length]}`;
 
       manifestEntries.push({

@@ -34,7 +34,8 @@ const TICKS: Tick[] = (() => {
 })();
 const LAST = TICKS.length - 1;
 
-function focalAt(progress: number): number {
+/** Exported for unit testing — pure, side-effect-free. */
+export function focalAt(progress: number): number {
   const x = progress * (FOCALS.length - 1);
   const i = Math.min(FOCALS.length - 2, Math.floor(x));
   const frac = x - i;
@@ -43,9 +44,9 @@ function focalAt(progress: number): number {
 
 export function FocalAxis() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const rowRefs = useRef<HTMLDivElement[]>([]);
-  const markRefs = useRef<HTMLDivElement[]>([]);
-  const labelRefs = useRef<HTMLSpanElement[]>([]);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const markRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const labelRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const readoutRef = useRef<HTMLSpanElement>(null);
 
   useGSAP(
@@ -74,6 +75,7 @@ export function FocalAxis() {
           // Cull anything well outside the viewport.
           if (y < -40 || y > H + 40) {
             row.style.opacity = "0";
+            row.style.willChange = "auto";
             continue;
           }
 
@@ -82,6 +84,7 @@ export function FocalAxis() {
           // so a major tick's mark lands on the index/caret instead of below it.
           row.style.transform = `translateY(${y}px) translateY(-50%)`;
           row.style.opacity = "1";
+          row.style.willChange = "transform";
 
           const markScale = 0.5 + mag * 1.1;
           mark.style.transform = `scaleX(${markScale})`;
@@ -153,14 +156,14 @@ export function FocalAxis() {
         <div
           key={i}
           ref={(el) => {
-            if (el) rowRefs.current[i] = el;
+            rowRefs.current[i] = el;
           }}
-          className="absolute top-0 left-0 flex w-full items-center will-change-transform"
+          className="absolute top-0 left-0 flex w-full items-center"
           style={{ opacity: 0 }}
         >
           <div
             ref={(el) => {
-              if (el) markRefs.current[i] = el;
+              markRefs.current[i] = el;
             }}
             className="bg-foreground origin-left"
             style={{
@@ -172,7 +175,7 @@ export function FocalAxis() {
           {tick.major && (
             <span
               ref={(el) => {
-                if (el) labelRefs.current[i] = el;
+                labelRefs.current[i] = el;
               }}
               className="text-muted font-sans ml-4 origin-left text-[11px] leading-none tabular-nums"
               style={{ opacity: 0 }}

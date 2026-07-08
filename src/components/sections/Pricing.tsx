@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Label, Text, Title } from "@/components/ui/Typography";
+import { ShieldCheckIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
 import { pricingPackages } from "@/lib/content";
 import { useTranslations } from "next-intl";
@@ -98,20 +99,7 @@ export function Pricing() {
 
           {/* Satisfaction guarantee */}
           <div className="border-accent/25 bg-surface mx-auto flex max-w-xl items-start gap-4 border p-6">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-accent mt-0.5 h-5 w-5 shrink-0"
-              aria-hidden="true"
-            >
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <polyline points="9 12 11 14 15 10" />
-            </svg>
+            <ShieldCheckIcon className="text-accent mt-0.5 h-5 w-5 shrink-0" />
             <div>
               <p className="font-serif font-semibold">{t("guarantee.heading")}</p>
               <Text tone="muted" size="sm">

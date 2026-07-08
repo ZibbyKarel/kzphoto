@@ -36,7 +36,7 @@ export function ContactForm() {
       phone: (fd.get("phone") as string | null) ?? undefined,
       message: (fd.get("message") as string | null) ?? "",
       // checkbox returns "on" when checked, null when unchecked
-      gdpr: fd.get("gdpr") === "on" ? (true as const) : (false as unknown as true),
+      gdpr: fd.get("gdpr") === "on",
       // honeypot
       website: (fd.get("website") as string | null) ?? "",
     };

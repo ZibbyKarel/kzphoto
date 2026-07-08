@@ -12,6 +12,7 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "openPhoto": "Open: {alt}",
+    "lightboxLabel": "Lightbox — {alt}",
     "closeLightbox": "Close lightbox",
     "prevPhoto": "Previous photo",
     "nextPhoto": "Next photo"

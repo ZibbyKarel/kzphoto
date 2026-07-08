@@ -16,7 +16,6 @@ for phases. Deferred: blog.
 - **Tailwind v4** — CSS-first tokens in `src/app/globals.css` `@theme`; no `tailwind.config`.
 - **next-intl** for i18n. **GSAP** (`@gsap/react` `useGSAP`) for animations.
 - **Sanity** as an *optional* CMS layer (see below). **Web3Forms** for the contact form.
-  (`resend` is in package.json but unused — leftover.)
 
 ## Commands
 
@@ -25,10 +24,10 @@ build all pass (run all three before declaring done).
 
 ## Architecture
 
-### i18n — prefix-as-needed, via middleware
+### i18n — prefix-as-needed, via proxy
 - Routing config: `src/i18n/routing.ts` (`localePrefix: "as-needed"`, locales `cs`/`en`, default
   `cs`). The default locale (`cs`) is served unprefixed at `/`; `en` carries `/en`. Enforced by
-  `src/middleware.ts` (next-intl's `createMiddleware`), which also redirects `/cs/...` to the
+  `src/proxy.ts` (next-intl's `createMiddleware`), which also redirects `/cs/...` to the
   unprefixed path.
 - Routes live under `src/app/(site)/[locale]/`, which is the sole top-level route group (its
   `layout.tsx` is the app's root `<html>` layout).
@@ -70,7 +69,7 @@ build all pass (run all three before declaring done).
   workflow. Env vars (`NEXT_PUBLIC_WEB3FORMS_KEY`, optional Sanity vars) live in the Vercel
   project's Environment Variables settings, not in the repo.
 - No `output: "export"`, no `basePath`, no `images.unoptimized` — Next's Image Optimization and
-  middleware run normally. `trailingSlash: true` is kept for URL continuity with the site's
+  the proxy run normally. `trailingSlash: true` is kept for URL continuity with the site's
   previous GitHub Pages export.
 - Custom domain `kzphoto.cz` is configured on the Vercel project; `site.ts` `url` must match it.
 

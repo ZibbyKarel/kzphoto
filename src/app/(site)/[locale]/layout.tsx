@@ -15,13 +15,13 @@ import { localizedUrl, languageAlternates, ogLocale, ogImage } from "@/lib/metad
 import "../../globals.css";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-inter",
   display: "swap",
 });
 
 const fraunces = Fraunces({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-fraunces",
   display: "swap",
   axes: ["opsz"],
